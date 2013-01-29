@@ -15,10 +15,12 @@ set tabstop=4
 set shiftwidth=4
 
 set nu " show line numbers, use ":set nu!" to disable
-set paste
+set modeline
+set ls=2 " always show filename at bottome
+set paste " don't automatically insert tabs when pasting
 
 let $PAGER=''
-"latex plugin
+" latex plugin
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
@@ -27,3 +29,16 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+" bind <F5> to toggle word-wrap
+:map <F5> :set nowrap! <CR>
+" bind <F7> to toggle syntax highlighting
+:map <F7> :if exists("g:syntax_on") <Bar>
+	\ syntax off <Bar>
+	\ else <Bar>
+	\ syntax enable <Bar>
+	\ endif <CR>
+
+" vimdiff color scheme
+highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
+highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
