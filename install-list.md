@@ -7,3 +7,4 @@ bash-completion
 vim plugins
 -----------
 vim-markdown
+vim-latexsuite

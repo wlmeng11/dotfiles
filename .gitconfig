@@ -1,1 +1,10 @@
-/home/wlmeng/.gitconfig
+[user]
+	email = wlmeng11@gmail.com
+	name = William Meng
+[color]
+	ui = auto
+[credential]
+    helper = cache
+
+[alias]
+          pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
