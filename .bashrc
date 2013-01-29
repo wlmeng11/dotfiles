@@ -7,6 +7,7 @@
 
 PS1='[\u@\h \W]\$ '
 
+#set vim as manpage viewer
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 	vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
 	-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
@@ -25,7 +26,6 @@ export EDITOR="vim"
 
 shopt -s autocd
 
-#export PROMPT_COMMAND=’history -a’
 shopt -s histappend
 PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT="%h/%d -- %H:%M:%S "
@@ -36,7 +36,7 @@ HISTFILESIZE=2000
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-alias vi='vim -C'
+alias vi='vim'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -60,6 +60,3 @@ alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 #set -o vi
 
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
-alias windoze='virtualbox --startvm Windoze\ 7 --seamless'
-alias ltg='echo You just lost the game | cowsay -f tux'
-alias dash='cat ~/.rdash'
