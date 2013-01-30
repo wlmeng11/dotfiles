@@ -15,12 +15,12 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 
 PATH=$PATH:/opt/android-sdk/platform-tools/
 PATH=$PATH:/opt/android-sdk/tools/
+PATH=$PATH:~/android/bin
 PATH=$PATH:/home/wlmeng/bin/
 PATH=$PATH:/home/wlmeng/.gem/ruby/1.9.3/bin
 #PATH=$PATH:/home/wlmeng/.gem/ruby/1.9.1/bin
 ANDROID_JAVA_HOME=/opt/java6
 export ANDROID_JAVA_HOME
-PATH=~/android/bin:$PATH
 export PATH
 export EDITOR="vim"
 
