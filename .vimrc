@@ -38,6 +38,8 @@ augroup END
 	\ else <Bar>
 	\ syntax enable <Bar>
 	\ endif <CR>
+" bind <F3> to toggle line numbers
+:map <F3> :set nu! <CR>
 
 " vimdiff color scheme
 highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
