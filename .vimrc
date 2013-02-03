@@ -40,6 +40,8 @@ augroup END
 	\ endif <CR>
 " bind <F3> to toggle line numbers
 :map <F3> :set nu! <CR>
+" bind <F8> to compile in g++ and run
+map <F8> : !g++ % && ./a.out <CR>
 
 " vimdiff color scheme
 highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
