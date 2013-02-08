@@ -8,3 +8,9 @@ vim plugins
 -----------
 vim-markdown
 vim-latexsuite
+vim-pathogen
+
+vim colors
+----------
+solarized
+tango

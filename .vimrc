@@ -7,6 +7,7 @@
 syntax on
 set nocompatible
 filetype plugin indent on
+execute pathogen#infect()
 
 set history=700
 set autoread
@@ -18,6 +19,9 @@ set nu " show line numbers, use ":set nu!" to disable
 set modeline
 set ls=2 " always show filename at bottome
 set paste " don't automatically insert tabs when pasting
+set foldmethod=syntax
+set foldlevelstart=99
+set fdc=1
 
 let $PAGER=''
 " latex plugin
@@ -43,6 +47,9 @@ augroup END
 " bind <F8> to compile in g++ and run
 map <F8> : !g++ % && ./a.out <CR>
 
+set background=dark
+colorscheme tango
+
 " vimdiff color scheme
-highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
-highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
+" highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
+" highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red

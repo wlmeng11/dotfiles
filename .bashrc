@@ -17,11 +17,11 @@ PATH=$PATH:/opt/android-sdk/platform-tools/
 PATH=$PATH:/opt/android-sdk/tools/
 PATH=$PATH:~/android/bin
 PATH=$PATH:/home/wlmeng/bin/
-PATH=$PATH:/home/wlmeng/.gem/ruby/1.9.3/bin
-#PATH=$PATH:/home/wlmeng/.gem/ruby/1.9.1/bin
+export PATH
+
 ANDROID_JAVA_HOME=/opt/java6
 export ANDROID_JAVA_HOME
-export PATH
+
 export EDITOR="vim"
 
 shopt -s autocd
@@ -31,10 +31,8 @@ PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT="%h/%d -- %H:%M:%S "
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=2000
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+HISTSIZE=1000000
+HISTFILESIZE=20000
 
 alias vi='vim'
 
@@ -59,4 +57,5 @@ alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 
 #set -o vi
 
+alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
