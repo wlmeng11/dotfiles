@@ -18,7 +18,7 @@ set shiftwidth=4
 set nu " show line numbers, use ":set nu!" to disable
 set modeline
 set ls=2 " always show filename at bottome
-set paste " don't automatically insert tabs when pasting
+" set paste " don't automatically insert tabs when pasting
 set foldmethod=syntax
 set foldlevelstart=99
 set fdc=1
