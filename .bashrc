@@ -21,7 +21,6 @@ export PATH
 
 ANDROID_JAVA_HOME=/opt/java6
 export ANDROID_JAVA_HOME
-
 export EDITOR="vim"
 
 shopt -s autocd
@@ -31,10 +30,8 @@ PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT="%h/%d -- %H:%M:%S "
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
-HISTFILESIZE=20000
-
-alias vi='vim'
+HISTSIZE=10000000000
+HISTFILESIZE=20000000
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
