@@ -6,8 +6,10 @@
 
 syntax on
 set nocompatible
+set exrc
+set secure
 filetype plugin indent on
-execute pathogen#infect()
+" execute pathogen#infect()
 
 set history=700
 set autoread
@@ -48,7 +50,7 @@ augroup END
 map <F8> : !g++ % && ./a.out <CR>
 
 set background=dark
-colorscheme tango
+" colorscheme tango
 
 " vimdiff color scheme
 " highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
