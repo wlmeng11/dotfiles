@@ -1,7 +1,7 @@
 " Normal Mode Mappings
 noremap j 3j
 noremap k 3k
-nnoremap <C-f> <Ins><C-f><Ins>
+nnoremap <C-f> /
 nnoremap <C-n> <Ins><C-n><Ins>
 
 " Insert Mode Mappings
