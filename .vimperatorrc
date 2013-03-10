@@ -7,3 +7,4 @@ nnoremap <C-p> <Ins><C-p><Ins>
 
 " Insert Mode Mappings
 inoremap <C-a> <Ins><C-a><Ins>
+inoremap <C-t> <Ins><C-t><Ins>
