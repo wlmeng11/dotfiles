@@ -53,6 +53,7 @@ alias l='ls'
 alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 
 #set -o vi
+alias sftp="sftp-r"
 
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
