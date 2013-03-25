@@ -4,6 +4,7 @@ noremap k 3k
 nnoremap <C-f> /
 nnoremap <C-n> <Ins><C-n><Ins>
 nnoremap <C-p> <Ins><C-p><Ins>
+nnoremap <Esc> <Ins><Esc><Ins>
 
 " Insert Mode Mappings
 inoremap <C-a> <Ins><C-a><Ins>
