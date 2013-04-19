@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
+#PS1='[\u@\h \W]\$ '
 
 #set vim as manpage viewer
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
@@ -53,7 +53,7 @@ alias l='ls'
 alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 
 #set -o vi
-alias sftp="sftp-r"
+alias sftp="sftp -r"
 
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
