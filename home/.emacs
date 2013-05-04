@@ -21,6 +21,11 @@
   ;; for terminal mode only
   )
 
+;; multiple cursors plugin
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-word-like-this)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
