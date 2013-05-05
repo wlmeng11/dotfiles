@@ -7,9 +7,11 @@
     helper = cache
 
 [alias]
-          pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
 	unstage = reset HEAD --
 [diff]
-	tool = vimdiff
+	tool = gvimdiff
+[merge]
+	tool = gvimdiff
 [push]
 	default = current
