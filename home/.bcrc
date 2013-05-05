@@ -1,0 +1,23 @@
+scale=6
+
+define factorial(x) {
+	if (x <= 1) return (1);
+	return (x*factorial(x-1));
+}
+define f(x) {
+	return (factorial(x));
+}
+
+define permutation(n,r) {
+	return (factorial(n)/factorial(n-r) );
+}
+define nPr(n,r) {
+	return (permutation(n,r));
+}
+
+define combination(n,r) {
+	return (permutation(n,r)/factorial(r) );
+}
+define nCr(n,r) {
+	return (combination(n,r));
+}
