@@ -5,26 +5,29 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#PS1='[\u@\h \W]\$ '
+#PS1='[\u@\h \W]\$ ' #Standard PS1
+
+# RVM
+[[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion" # RVM bash completion
 
 #set vim as manpage viewer
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-	vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-	-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-	-c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+#export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+#	vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+#	-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+#	-c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+
+export EDITOR="vim"
+export BC_ENV_ARGS=~/.bcrc
+
+export ANDROID_JAVA_HOME=/opt/java6
 
 PATH=$PATH:/opt/android-sdk/platform-tools/
-PATH=$PATH:/opt/android-sdk/tools/
-PATH=$PATH:~/android/bin
-PATH=$PATH:/home/wlmeng/bin/
+PATH=$PATH:/home/wlmeng/workspace/robotics/ucpp/ucpp
 export PATH
 
-ANDROID_JAVA_HOME=/opt/java6
-export ANDROID_JAVA_HOME
-export EDITOR="vim"
-
+ulimit -u 1000 # Limit nproc to prevent fork bombs
 shopt -s autocd
-
 shopt -s histappend
 PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT="%h/%d -- %H:%M:%S "
@@ -52,8 +55,8 @@ alias la='ls -A'
 alias l='ls'
 alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 
-#set -o vi
-alias sftp="sftp -r"
+alias sftp="sftp -r" # Use sftp in recursive mode
 
+# Pacman aliases
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
