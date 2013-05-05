@@ -11,13 +11,13 @@ define f(x) {
 define permutation(n,r) {
 	return (factorial(n)/factorial(n-r) );
 }
-define nPr(n,r) {
+define npr(n,r) {
 	return (permutation(n,r));
 }
 
 define combination(n,r) {
 	return (permutation(n,r)/factorial(r) );
 }
-define nCr(n,r) {
+define ncr(n,r) {
 	return (combination(n,r));
 }
