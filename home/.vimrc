@@ -13,6 +13,8 @@ filetype plugin indent on
 
 set history=700
 set autoread
+set wildmode=longest,list,full " tab completion
+set wildmenu
 
 set tabstop=4
 set shiftwidth=4
@@ -52,6 +54,11 @@ map <F8> : !g++ % && ./a.out <CR>
 set background=dark
 " colorscheme tango
 
-" vimdiff color scheme
-" highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
-" highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
+let g:netrw_liststyle=3 " tree style
+" Hit enter in the file browser to open the selected
+" file with :vsplit to the right of the browser.
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
+" Change directory to the current buffer when opening files.
+set autochdir
