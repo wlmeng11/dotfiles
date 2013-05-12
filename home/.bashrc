@@ -56,6 +56,9 @@ alias l='ls'
 alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 
 alias sftp="sftp -r" # Use sftp in recursive mode
+alias cp="cp -i"
+alias rm="rm -i"
+alias mv="mv -i"
 
 # Pacman aliases
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
