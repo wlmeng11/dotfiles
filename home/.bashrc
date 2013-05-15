@@ -7,6 +7,13 @@
 
 #PS1='[\u@\h \W]\$ ' #Standard PS1
 
+if [ -n "$DISPLAY" ]; then
+    EDITOR=gvim
+	setxkbmap -option caps:escape
+else
+    EDITOR=vim
+fi
+
 # RVM
 [[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion" # RVM bash completion
@@ -17,9 +24,9 @@
 #	-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
 #	-c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
-export EDITOR="vim"
+# Export some variables
 export BC_ENV_ARGS=~/.bcrc
-
+export TERMINAL=xfce4-terminal
 export ANDROID_JAVA_HOME=/opt/java6
 
 PATH=$PATH:/opt/android-sdk/platform-tools/
