@@ -9,7 +9,6 @@ set nocompatible
 set exrc
 set secure
 filetype plugin indent on
-" execute pathogen#infect()
 
 set history=700
 set autoread
@@ -38,6 +37,7 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
+:nnoremap K i<CR><Esc>
 " bind <F5> to toggle word-wrap
 :map <F5> :set nowrap! <CR>
 " bind <F7> to toggle syntax highlighting
