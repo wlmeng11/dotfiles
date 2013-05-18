@@ -34,6 +34,7 @@ elif [[ $1 == "i3" ]]
 then
 	exec i3
 else
-	echo "Choose a window manager"
+	# echo "Choose a window manager"
+	exec startxfce4 # XFCE by default
 fi
 # ...or the Window Manager of your choice
