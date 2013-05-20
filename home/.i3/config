@@ -24,6 +24,8 @@ for_window [class="Pidgin"] floating enable; border normal; focus mode_toggle
 for_window [class="Mplayer"] floating enable; border normal; focus mode_toggle
 for_window [class="Smplayer"] floating enable; border normal; focus mode_toggle
 for_window [class="Steam"] floating enable; border none; focus mode_toggle
+for_window [class="Nitrogen"] floating enable; border normal; focus mode_toggle
+for_window [class="Arandr"] floating enable; border normal; focus mode_toggle
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
