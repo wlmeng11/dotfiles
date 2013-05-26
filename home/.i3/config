@@ -11,6 +11,21 @@
 
 set $mod Mod1
 
+# Synaptic rules for touchpad
+exec --no-startup-id synclient HorizTwoFingerScroll=1 # Enable multitouch horizontal scrolling
+exec --no-startup-id synclient TapButton1=0 # Disable tap to click
+exec --no-startup-id synclient TapButton2=0 # Disable tap to click
+exec --no-startup-id synclient TapButton3=0 # Disable tap to click
+
+# xinput rules for Trackpoint
+exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
+exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
+exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 200
+exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
+
+# Compositing
+exec --no-startup-id compton --backend glx --sw-opti --vsync opengl-swc --paint-on-overlay
+
 # Startup programs
 exec --no-startup-id nm-applet # Network manager
 exec --no-startup-id nitrogen --restore # set wallpaper with nitrogen
@@ -42,25 +57,25 @@ floating_modifier $mod
 # take screenshot with PrintScreen
 bindcode 107 exec scrot -e 'mv $f /home/wlmeng/Pictures/screenshots/'
 
-# toggle touchpad
+# toggle touchpad with Fn+<F8>
 bindcode 199 exec /home/wlmeng/.scripts/touchpadToggle.sh
 
 # bind volume buttons
+# Alternatively, use xfce4-volumed
 # bindcode 121 # mute
 # bindcode 122 # volume down
 # bindcode 123 # volume up
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Ctrl+t exec xfce4-terminal
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Ctrl+t exec i3-sensible-terminal
 
 # start file browser
 bindsym $mod+Ctrl+f exec thunar
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+F4 kill
+bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -70,40 +85,18 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-# bindsym $mod+j focus left
-# bindsym $mod+k focus down
-# bindsym $mod+l focus up
-# bindsym $mod+semicolon focus right
-#
 # VIM style:
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
-
 # move focused window
-# bindsym $mod+Shift+j move left
-# bindsym $mod+Shift+k move down
-# bindsym $mod+Shift+l move up
-# bindsym $mod+Shift+semicolon move right
-#
 # VIM style:
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-# bindsym $mod+Shift+Left move left
-# bindsym $mod+Shift+Down move down
-# bindsym $mod+Shift+Up move up
-# bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 # bindsym $mod+h split h
@@ -177,22 +170,11 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        # bindsym j resize shrink width 10 px or 10 ppt
-        # bindsym k resize grow height 10 px or 10 ppt
-        # bindsym l resize shrink height 10 px or 10 ppt
-        # bindsym semicolon resize grow width 10 px or 10 ppt
-        #
         # VIM style:
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        # bindsym Left resize shrink width 10 px or 10 ppt
-        # bindsym Down resize grow height 10 px or 10 ppt
-        # bindsym Up resize shrink height 10 px or 10 ppt
-        # bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -204,6 +186,9 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+	# font pango:DejaVu Sans Mono 10
 	status_command i3status
-	tray_output primary # show notification tray on primary monitor
+	# tray_output primary # show notification tray on primary monitor
+	# tray_output LVDS1 # show notification tray on LVDS1
 }
