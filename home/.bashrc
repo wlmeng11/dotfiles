@@ -4,6 +4,8 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+# Check for detached tmux sessions and attach to it, else create new
+[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
 
 #PS1='[\u@\h \W]\$ ' #Standard PS1
 
@@ -18,15 +20,9 @@ fi
 [[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion" # RVM bash completion
 
-#set vim as manpage viewer
-#export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-#	vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-#	-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-#	-c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 # Export some variables
 export BC_ENV_ARGS=~/.bcrc
-export TERMINAL=xfce4-terminal
 export ANDROID_JAVA_HOME=/opt/java6
 
 PATH=$PATH:/opt/android-sdk/platform-tools/
