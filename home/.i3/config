@@ -9,6 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# Use Alt key as mod
 set $mod Mod1
 
 # Synaptic rules for touchpad
@@ -23,24 +24,26 @@ exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulat
 exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 200
 exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
 
-# Compositing
-exec --no-startup-id compton --backend glx --sw-opti --vsync opengl-swc --paint-on-overlay
+##########
 
 # Startup programs
-exec --no-startup-id nm-applet # Network manager
+exec --no-startup-id compton --backend glx --sw-opti --vsync opengl-swc --paint-on-overlay # Compositing
 exec --no-startup-id nitrogen --restore # set wallpaper with nitrogen
 exec --no-startup-id xfce4-volumed # control volume with buttons
+exec --no-startup-id nm-applet # Network manager
 exec --no-startup-id synapse # Synapse program launcher
 
-#Window rules
+# Floating borderless windows
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
-for_window [class="Synapse"] floating enable; border none; focus mode_toggle
+for_window [class="Synapse"] floating enable; border none
+for_window [class="Steam"] floating enable; border none
+# Floating bordered windows
 for_window [class="Pidgin"] floating enable; border normal; focus mode_toggle
-for_window [class="Mplayer"] floating enable; border normal; focus mode_toggle
-for_window [class="Smplayer"] floating enable; border normal; focus mode_toggle
-for_window [class="Steam"] floating enable; border none; focus mode_toggle
-for_window [class="Nitrogen"] floating enable; border normal; focus mode_toggle
-for_window [class="Arandr"] floating enable; border normal; focus mode_toggle
+for_window [class="Mplayer"] floating enable; border normal
+for_window [class="Smplayer"] floating enable; border normal
+for_window [class="Nitrogen"] floating enable; border normal
+for_window [class="Arandr"] floating enable; border normal
+for_window [class="Gthumb"] floating enable; border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -120,34 +123,42 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
+
+
+# rename workspace
+bindsym $mod+comma exec i3-input -F 'rename workspace to %s' -P 'New name: '
+
+# Assign programs to specific workspaces
+assign [class="Pidgin"] 10:chat
+assign [class="Thunderbird"] 9:mail
 
 # switch to workspace
-bindsym $mod+1 workspace 1
+bindsym $mod+1 workspace 1:web
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+8 workspace 8:music
+bindsym $mod+9 workspace 9:mail
+bindsym $mod+0 workspace 10:chat
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+1 move container to workspace 1:web
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+8 move container to workspace 8:music
+bindsym $mod+Shift+9 move container to workspace 9:mail
+bindsym $mod+Shift+0 move container to workspace 10:chat
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -166,10 +177,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Pressing left will shrink the window's width.
+        # Pressing right will grow the window's width.
+        # Pressing up will shrink the window's height.
+        # Pressing down will grow the window's height.
         # VIM style:
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
@@ -188,7 +199,7 @@ bindsym $mod+r mode "resize"
 bar {
 	# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	# font pango:DejaVu Sans Mono 10
-	status_command i3status
+	status_command i3status --config ~/.i3/i3status.conf
 	# tray_output primary # show notification tray on primary monitor
 	# tray_output LVDS1 # show notification tray on LVDS1
 }
