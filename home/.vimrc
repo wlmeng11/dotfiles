@@ -38,6 +38,11 @@ augroup myvimrc
 augroup END
 
 :nnoremap K i<CR><Esc>
+
+" bind <F2> to display time and date
+:map <F2> :echo 'Current time is ' . strftime('%c')<CR>
+" bind <F3> to toggle line numbers
+:map <F3> :set nu! <CR>
 " bind <F5> to toggle word-wrap
 :map <F5> :set nowrap! <CR>
 " bind <F7> to toggle syntax highlighting
@@ -46,8 +51,6 @@ augroup END
 	\ else <Bar>
 	\ syntax enable <Bar>
 	\ endif <CR>
-" bind <F3> to toggle line numbers
-:map <F3> :set nu! <CR>
 " bind <F8> to compile in g++ and run
 map <F8> : !g++ % && ./a.out <CR>
 
@@ -62,3 +65,6 @@ let g:netrw_altv = 1
 
 " Change directory to the current buffer when opening files.
 set autochdir
+
+" Filetype specific stuff
+autocmd FileType ruby compiler ruby
