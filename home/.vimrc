@@ -5,31 +5,37 @@
 " "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
 syntax on
-set nocompatible
-set exrc
-set secure
-filetype plugin indent on
+set nocompatible " don't run in VI compatibility mode
+set exrc " read directory-specific config files
+set secure " restrictions for reading config files
+set background=dark
+set autochdir " Change directory to the current buffer when opening files.
 
 set history=700
 set autoread
 set wildmode=longest,list,full " tab completion
 set wildmenu
+set hlsearch
+set incsearch " highlight matches while searching with "/"
 
 set tabstop=4
 set shiftwidth=4
+set enc=utf8 " set encoding to utf8 for gvim
 
 set nu " show line numbers, use ":set nu!" to disable
 set modeline
 set ls=2 " always show filename at bottome
-" set paste " don't automatically insert tabs when pasting
 set foldmethod=syntax
-set foldlevelstart=99
-set fdc=1
+set foldlevelstart=99 " initially expand all folds
+set fdc=1 " show folds in left column
 
-let $PAGER=''
-" latex plugin
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
+filetype plugin indent on
+" Filetype specific stuff
+autocmd FileType ruby compiler ruby
+set ofu=syntaxcomplete#Complete " auto-complete in insert mode
+" <C-n>			method/variable
+" <C-x><C-f>	filename
+" <C-x><C-l>	whole line
 
 " automatically reload vimrc
 augroup myvimrc
@@ -37,34 +43,41 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
-:nnoremap K i<CR><Esc>
+nnoremap K i<CR><Esc>
+
+" Map ctrl-movement keys to window switching
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
 
 " bind <F2> to display time and date
-:map <F2> :echo 'Current time is ' . strftime('%c')<CR>
+map <F2> :echo 'Current time is ' . strftime('%c')<CR>
 " bind <F3> to toggle line numbers
-:map <F3> :set nu! <CR>
+map <F3> :set nu! <CR>
 " bind <F5> to toggle word-wrap
-:map <F5> :set nowrap! <CR>
+map <F5> :set nowrap! <CR>
 " bind <F7> to toggle syntax highlighting
-:map <F7> :if exists("g:syntax_on") <Bar>
+map <F7> :if exists("g:syntax_on") <Bar>
 	\ syntax off <Bar>
 	\ else <Bar>
 	\ syntax enable <Bar>
 	\ endif <CR>
-" bind <F8> to compile in g++ and run
-map <F8> : !g++ % && ./a.out <CR>
 
-set background=dark
-" colorscheme tango
+" miniBufExplorer config
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1 " switch buffers with <C-Tab> and <C-S-Tab>
+let g:miniBufExplModSelTarget = 1
 
+" netrw configuration
 let g:netrw_liststyle=3 " tree style
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 
-" Change directory to the current buffer when opening files.
-set autochdir
-
-" Filetype specific stuff
-autocmd FileType ruby compiler ruby
+let $PAGER=''
+" latex plugin
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"

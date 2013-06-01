@@ -1,6 +1,6 @@
 /* Tango Color scheme */
 URxvt.foreground: #C8C8C8
-# URxvt.background: #323232
+!URxvt.background: #323232
 URxvt.background: #000000
 URxvt.color0: #2E3436
 URxvt.color1: #CC0000
@@ -18,12 +18,12 @@ URxvt.color12: #729FCF
 URxvt.color13: #AD7FA8
 URxvt.color14: #34E2E2
 URxvt.color15: #EEEEEC
- 
-# URxvt.transparent: true
+
+!URxvt.transparent: true
 URxvt.shading: 10
 URxvt.fading: 40
 URxvt.font: xft:Mono:pixelsize=12.5
- 
+
 URxvt.scrollBar: false
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
