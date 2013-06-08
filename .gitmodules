@@ -1,0 +1,6 @@
+[submodule "home/.vim/bundle/command-t"]
+	path = home/.vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "home/.vim/bundle/vim-openscad"]
+	path = home/.vim/bundle/vim-openscad
+	url = git://github.com/sirtaj/vim-openscad.git
