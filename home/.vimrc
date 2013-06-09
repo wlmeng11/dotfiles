@@ -4,12 +4,14 @@
 " For multi-byte character support (CJK support, for example):
 " "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
+execute pathogen#infect()
 syntax on
 set nocompatible " don't run in VI compatibility mode
 set exrc " read directory-specific config files
 set secure " restrictions for reading config files
 set background=dark
-set autochdir " Change directory to the current buffer when opening files.
+" set autochdir " Change directory to the current buffer when opening files.
+set showcmd
 
 set history=700
 set autoread
@@ -44,6 +46,14 @@ augroup myvimrc
 augroup END
 
 nnoremap K i<CR><Esc>
+
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
