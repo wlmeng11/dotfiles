@@ -12,38 +12,39 @@
 # Use Alt key as mod
 set $mod Mod1
 
-# Synaptic rules for touchpad
-exec --no-startup-id synclient HorizTwoFingerScroll=1 # Enable multitouch horizontal scrolling
-exec --no-startup-id synclient TapButton1=0 # Disable tap to click
-exec --no-startup-id synclient TapButton2=0 # Disable tap to click
-exec --no-startup-id synclient TapButton3=0 # Disable tap to click
-
-# xinput rules for Trackpoint
-exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
-exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
-exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 200
-exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
+exec --no-startup-id ~/.scripts/mouseRules.sh
 
 ##########
 
 # Startup programs
 exec --no-startup-id compton --backend glx --sw-opti --vsync opengl-swc --paint-on-overlay # Compositing
-exec --no-startup-id nitrogen --restore # set wallpaper with nitrogen
-exec --no-startup-id xfce4-volumed # control volume with buttons
-exec --no-startup-id nm-applet # Network manager
-exec --no-startup-id synapse # Synapse program launcher
+exec --no-startup-id nitrogen --restore # set wallpaper
+exec --no-startup-id xfce4-volumed # volume control
+exec --no-startup-id nm-applet # Network Manager
+exec --no-startup-id synapse # program launcher
+exec --no-startup-id gnome-screensaver
+exec --no-startup-id clipit # clipboard manager
+
+exec --no-startup-id pactl set-sink-volume 0 '20%'
+exec --no-startup-id xbacklight -set 50
+
+for_window [class="[.]*"] floating enable;
+
+for_window [class="Firefox" instance="Navigator"] floating disable;
+for_window [class="URxvt"] floating disable;
+for_window [class="Gvim"] floating disable;
+for_window [class="Thunderbird" instance="Mail"] floating disable;
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="utility"] floating enable
+for_window [window_role="toolbar"] floating enable
+for_window [window_role="splash"] floating enable
+for_window [title="VIM - ATTENTION"] floating enable
 
 # Floating borderless windows
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
 for_window [class="Synapse"] floating enable; border none
 for_window [class="Steam"] floating enable; border none
-# Floating bordered windows
-for_window [class="Pidgin"] floating enable; border normal; focus mode_toggle
-for_window [class="Mplayer"] floating enable; border normal
-for_window [class="Smplayer"] floating enable; border normal
-for_window [class="Nitrogen"] floating enable; border normal
-for_window [class="Arandr"] floating enable; border normal
-for_window [class="Gthumb"] floating enable; border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -63,6 +64,10 @@ bindcode 107 exec scrot -e 'mv $f /home/wlmeng/Pictures/screenshots/'
 # toggle touchpad with Fn+<F8>
 bindcode 199 exec /home/wlmeng/.scripts/touchpadToggle.sh
 
+# lock button
+# bindcode 160 exec i3lock
+bindcode 160 exec gnome-screensaver-command --lock
+
 # bind volume buttons
 # Alternatively, use xfce4-volumed
 # bindcode 121 # mute
@@ -71,10 +76,12 @@ bindcode 199 exec /home/wlmeng/.scripts/touchpadToggle.sh
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Ctrl+t exec i3-sensible-terminal
+bindsym Mod1+Ctrl+t exec i3-sensible-terminal
 
-# start file browser
-bindsym $mod+Ctrl+f exec thunar
+# other keybindings to applications
+bindsym Mod1+Ctrl+f exec thunar
+bindsym Mod4+f exec firefox
+bindsym Mod4+t exec thunderbird
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -109,7 +116,7 @@ bindsym $mod+semicolon split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -128,6 +135,7 @@ bindsym $mod+p focus parent
 # focus the child container
 bindsym $mod+c focus child
 
+bindsym Mod4+Tab workspace back_and_forth
 
 # rename workspace
 bindsym $mod+comma exec i3-input -F 'rename workspace to %s' -P 'New name: '
@@ -197,6 +205,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	mode hide
+	modifier $mod
 	# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	# font pango:DejaVu Sans Mono 10
 	status_command i3status --config ~/.i3/i3status.conf
