@@ -4,3 +4,9 @@
 [submodule "home/.vim/bundle/vim-openscad"]
 	path = home/.vim/bundle/vim-openscad
 	url = git://github.com/sirtaj/vim-openscad.git
+[submodule "home/.vim/bundle/vim-supertab"]
+	path = home/.vim/bundle/vim-supertab
+	url = https://github.com/tsaleh/vim-supertab.git
+[submodule "home/.vim/bundle/rubycomplete"]
+	path = home/.vim/bundle/rubycomplete
+	url = https://github.com/vim-scripts/rubycomplete.vim.git
