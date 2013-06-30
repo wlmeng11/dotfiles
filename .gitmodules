@@ -10,3 +10,9 @@
 [submodule "home/.vim/bundle/rubycomplete"]
 	path = home/.vim/bundle/rubycomplete
 	url = https://github.com/vim-scripts/rubycomplete.vim.git
+[submodule "home/.vim/bundle/syntastic"]
+	path = home/.vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "home/.vim/bundle/focus"]
+	path = home/.vim/bundle/focus
+	url = https://github.com/merlinrebrovic/focus.vim.git
