@@ -16,3 +16,9 @@
 [submodule "home/.vim/bundle/focus"]
 	path = home/.vim/bundle/focus
 	url = https://github.com/merlinrebrovic/focus.vim.git
+[submodule "home/.vim/bundle/unite"]
+	path = home/.vim/bundle/unite
+	url = https://github.com/Shougo/unite.vim.git
+[submodule "home/.vim/bundle/vundle"]
+	path = home/.vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git

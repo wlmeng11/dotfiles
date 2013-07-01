@@ -10,6 +10,7 @@ set nocompatible " don't run in VI compatibility mode
 set exrc " read directory-specific config files
 set secure " restrictions for reading config files
 set background=dark
+set mouse=a
 " set autochdir " Change directory to the current buffer when opening files.
 set showcmd
 
@@ -35,9 +36,11 @@ filetype plugin indent on
 " Filetype specific stuff
 autocmd FileType ruby compiler ruby
 set ofu=syntaxcomplete#Complete " auto-complete in insert mode
-" <C-n>			method/variable
-" <C-x><C-f>	filename
-" <C-x><C-l>	whole line
+" <C-n>			Keyword completion
+" <C-x><C-f>	Filename completion
+" <C-x><C-l>	Line completion
+" <C-x><C-o>	Omnicomplete
+" <C-x><C-u>	Eclim
 
 " automatically reload vimrc
 augroup myvimrc
@@ -55,11 +58,34 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Map ctrl-movement keys to window switching
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.o,*.d
+
+if exists('$TMUX')
+  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    execute "wincmd " . a:wincmd
+    if previous_winnr == winnr()
+      " The sleep and & gives time to get back to vim so tmux's focus tracking
+      " can kick in and send us our ^[[O
+      execute "silent !sh -c 'sleep 0.01; tmux select-pane -" . a:tmuxdir . "' &"
+      redraw!
+    endif
+  endfunction
+  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+else
+  map <C-h> <C-w><Left>
+  map <C-j> <C-w><Down>
+  map <C-k> <C-w><Up>
+  map <C-l> <C-w><Right>
+endif
+
+map <Leader>r :source ~/.vimrc<CR>
 
 " bind <F2> to display time and date
 map <F2> :echo 'Current time is ' . strftime('%c')<CR>
@@ -91,3 +117,11 @@ let $PAGER=''
 " latex plugin
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
+
+"ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
