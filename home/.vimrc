@@ -25,16 +25,13 @@ set tabstop=4
 set shiftwidth=4
 set enc=utf8 " set encoding to utf8 for gvim
 
-set nu " show line numbers, use ":set nu!" to disable
+set number " show line numbers, use ":set nu!" to disable
 set modeline
 set ls=2 " always show filename at bottome
 set foldmethod=syntax
 set foldlevelstart=99 " initially expand all folds
 set fdc=1 " show folds in left column
 
-filetype plugin indent on
-" Filetype specific stuff
-autocmd FileType ruby compiler ruby
 set ofu=syntaxcomplete#Complete " auto-complete in insert mode
 " <C-n>			Keyword completion
 " <C-x><C-f>	Filename completion
@@ -48,7 +45,7 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
-nnoremap K i<CR><Esc>
+set listchars=trail:.,extends:>
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -57,9 +54,15 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+" Removes trailing spaces
+function! TrimWhiteSpace()
+  %s/\s*$//
+  ''
+:endfunction
 
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.o,*.d
 
+" tmux pane integration
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
@@ -85,7 +88,15 @@ else
   map <C-l> <C-w><Right>
 endif
 
+" reload vimrc with \r
 map <Leader>r :source ~/.vimrc<CR>
+map \033[27;5;9~ :bnext
+map [27;5;9~ :bn<CR>
+" map   <Control><Tab> :bn<CR>
+map [Z :bp<CR>
+" map   <Control><Shift><Tab> :bp<CR>
+
+nnoremap K i<CR><Esc>
 
 " bind <F2> to display time and date
 map <F2> :echo 'Current time is ' . strftime('%c')<CR>
@@ -100,10 +111,39 @@ map <F7> :if exists("g:syntax_on") <Bar>
 	\ syntax enable <Bar>
 	\ endif <CR>
 
+filetype plugin indent on
+" Filetype specific stuff
+"ruby
+autocmd FileType ruby compiler ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+
+""" Plugins
+"" Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+" My Bundles here:
+"
+" original repos on github
+Bundle 'FredKSchott/CoVim'
+" Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+Bundle 'Floobits/floobits-vim'
+" needs to be moved to ~/.vim/bundle/Floobits
+Bundle 'SirVer/ultisnips'
+Bundle 'ervandew/supertab'
+
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1 " switch buffers with <C-Tab> and <C-S-Tab>
+let g:miniBufExplMapCTabSwitchBufs = 1 " switch buffers with <C-Tab> and <C-S-Tab> in GVIM
 let g:miniBufExplModSelTarget = 1
 
 " netrw configuration
@@ -113,15 +153,7 @@ let g:netrw_liststyle=3 " tree style
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 
-let $PAGER=''
 " latex plugin
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
-"ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
