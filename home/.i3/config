@@ -33,7 +33,11 @@ for_window [class="[.]*"] floating enable;
 for_window [class="Firefox" instance="Navigator"] floating disable;
 for_window [class="URxvt"] floating disable;
 for_window [class="Gvim"] floating disable;
+for_window [class="Vi"] floating disable; # for gvim sessions started in terminal then detached
 for_window [class="Thunderbird" instance="Mail"] floating disable;
+for_window [class="Evince"] floating disable;
+for_window [title="wlmeng - File Manager"] floating disable; # thunar default main window
+for_window [class="Emacs" ] floating disable;
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="utility"] floating enable
