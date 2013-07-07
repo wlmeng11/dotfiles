@@ -8,12 +8,14 @@
 [[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
 
 #PS1='[\u@\h \W]\$ ' #Standard PS1
+[[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
+PS1='\e[1;32m\u@\h \e[1;34m\W\e[1;33m$(__git_ps1 " (%s)") \e[1;34m$ \e[m'
 
 if [ -n "$DISPLAY" ]; then
-    EDITOR=gvim
+    export EDITOR=gvim
 	setxkbmap -option caps:escape
 else
-    EDITOR=vim
+    export EDITOR=vim
 fi
 
 # RVM
@@ -26,6 +28,7 @@ export BC_ENV_ARGS=~/.bcrc
 export ANDROID_JAVA_HOME=/opt/java6
 
 PATH=$PATH:/opt/android-sdk/platform-tools/
+PATH=$PATH:/home/wlmeng/bin
 PATH=$PATH:/home/wlmeng/workspace/robotics/ucpp/ucpp
 export PATH
 
@@ -57,6 +60,7 @@ alias la='ls -A'
 #alias l='ls -CF'
 alias l='ls'
 alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
+alias lstree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
 alias sftp="sftp -r" # Use sftp in recursive mode
 alias cp="cp -i"
