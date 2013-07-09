@@ -38,6 +38,7 @@ for_window [class="Thunderbird" instance="Mail"] floating disable;
 for_window [class="Evince"] floating disable;
 for_window [title="wlmeng - File Manager"] floating disable; # thunar default main window
 for_window [class="Emacs" ] floating disable;
+for_window [title="<Student Version> MATLAB R2013a"] floating disable;
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="utility"] floating enable
