@@ -9,9 +9,12 @@
 
 #PS1='[\u@\h \W]\$ ' #Standard PS1
 [[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
-PS1='\[\e[1;32m\]\u@\h \[\e[1;34m\]\W\[\e[1;33m\]$(__git_ps1 " (%s)") \[\e[1;34m\]$ \[\e[m\]'
-# PS1='\e[1;32m\u@\h \e[1;34m\W\e[1;33m$(__git_ps1 " (%s)") \e[1;34m$ \e[m' # bad spacing due to non-printing characters
-#PS1='\u@\h \W$(__git_ps1 " (%s)") $ ' # no color
+
+if [ $TERM = "dumb" ]; then
+	PS1='\u@\h \W$(__git_ps1 " (%s)") $ '
+else
+	PS1='\[\e[1;32m\]\u@\h \[\e[1;34m\]\W\[\e[1;33m\]$(__git_ps1 " (%s)") \[\e[1;34m\]$ \[\e[m\]'
+fi
 
 if [ -n "$DISPLAY" ]; then
     export EDITOR=gvim
@@ -73,6 +76,9 @@ alias killwithfire="killall -9"
 alias vim='vim -c "source ~/.vimrc"'
 alias vi='vi -c "source ~/.vimrc"'
 alias gvim='gvim -c "source ~/.vimrc"'
+
+alias freeze='killall -STOP'
+alias unfreeze='killall -CONT'
 
 # Pacman aliases
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'

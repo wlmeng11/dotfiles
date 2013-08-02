@@ -60,7 +60,7 @@ function! TrimWhiteSpace()
   ''
 :endfunction
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.o,*.d
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.o,*.d,*.pdf
 
 " tmux pane integration
 if exists('$TMUX')
@@ -139,6 +139,8 @@ Bundle 'Floobits/floobits-vim'
 " needs to be moved to ~/.vim/bundle/Floobits
 Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
+" Bundle 'Shougo/neocomplete.vim'
+Bundle 'terryma/vim-smooth-scroll'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
@@ -157,3 +159,42 @@ let g:netrw_altv = 1
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
+" YouCompleteMe
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_filetype_whitelist = {
+			\ 'c': 1,
+			\ 'cpp': 1,
+			\}
+let g:ycm_filetype_blacklist = {
+			\'ruby': 1,
+			\ 'java': 1,
+			\}
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,d,vim,ruby,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
+
+" Eclim
+" let g:EclimCompletionMethod = 'omnifunc'
+
+
+" Syntastic
+let g:syntastic_c_check_header = 1
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Smooth scrolling
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 15, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 15, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 15, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 15, 4)<CR>
