@@ -12,7 +12,7 @@
 # Use Alt key as mod
 set $mod Mod1
 
-exec --no-startup-id ~/.scripts/mouseRules.sh
+exec --no-startup-id ~/bin/mouseRules.sh
 
 ##########
 
@@ -24,6 +24,8 @@ exec --no-startup-id nm-applet # Network Manager
 exec --no-startup-id synapse # program launcher
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id clipit # clipboard manager
+exec --no-startup-id gpg-agent --server
+exec --no-startup-id gtk-redshift -l 37.44:-122.14 -t 6500:4700
 
 exec --no-startup-id pactl set-sink-volume 0 '20%'
 exec --no-startup-id xbacklight -set 50
@@ -39,6 +41,7 @@ for_window [class="Evince"] floating disable;
 for_window [title="wlmeng - File Manager"] floating disable; # thunar default main window
 for_window [class="Emacs" ] floating disable;
 for_window [title="<Student Version> MATLAB R2013a"] floating disable;
+for_window [class="VirtualBox" ] floating enable;
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="utility"] floating enable
@@ -66,8 +69,11 @@ floating_modifier $mod
 # take screenshot with PrintScreen
 bindcode 107 exec scrot -e 'mv $f /home/wlmeng/Pictures/screenshots/'
 
+# check external display fith Fn+<F7>
+bindcode 235 exec ~/bin/xdisplay.sh
+
 # toggle touchpad with Fn+<F8>
-bindcode 199 exec /home/wlmeng/.scripts/touchpadToggle.sh
+bindcode 199 exec ~/bin/touchpadToggle.sh
 
 # lock button
 # bindcode 160 exec i3lock
@@ -98,6 +104,11 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+bindsym Mod1+Ctrl+Up exec xrandr -o normal
+bindsym Mod1+Ctrl+Right exec xrandr -o right
+bindsym Mod1+Ctrl+Left exec xrandr -o left
+bindsym Mod1+Ctrl+Down exec xrandr -o inverted
 
 # change focus
 # VIM style:
@@ -206,15 +217,29 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym Mod4+Up exec i3-msg move workspace to output up
+bindsym Mod4+Down exec i3-msg move workspace to output down
+bindsym Mod4+Left exec i3-msg move workspace to output left
+bindsym Mod4+Right exec i3-msg move workspace to output right
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
 bar {
+	output VGA1
+	status_command i3status --config ~/.i3/i3status.conf
+	tray_output primary
+}
+bar {
+	output DP1
+	status_command i3status --config ~/.i3/i3status.conf
+	tray_output primary
+}
+bar {
+	output LVDS1
 	mode hide
 	modifier $mod
 	# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	# font pango:DejaVu Sans Mono 10
 	status_command i3status --config ~/.i3/i3status.conf
-	# tray_output primary # show notification tray on primary monitor
-	# tray_output LVDS1 # show notification tray on LVDS1
 }

@@ -4,8 +4,6 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-# Check for detached tmux sessions and attach to it, else create new
-[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
 
 #PS1='[\u@\h \W]\$ ' #Standard PS1
 [[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
@@ -17,6 +15,8 @@ else
 fi
 
 if [ -n "$DISPLAY" ]; then
+	# Check for detached tmux sessions and attach to it, else create new
+	[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
     export EDITOR=gvim
 	setxkbmap -option caps:escape
 else
