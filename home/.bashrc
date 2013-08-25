@@ -8,10 +8,15 @@
 #PS1='[\u@\h \W]\$ ' #Standard PS1
 [[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
 
+GREEN="\[\e[1;32m\]"
+BLUE="\[\e[1;34m\]"
+YELLOW="\[\e[1;33m\]"
+RED="\[\e[1;31m\]"
+ENDCOLOR="\[\e[m\]"
 if [ $TERM = "dumb" ]; then
 	PS1='\u@\h \W$(__git_ps1 " (%s)") $ '
 else
-	PS1='\[\e[1;32m\]\u@\h \[\e[1;34m\]\W\[\e[1;33m\]$(__git_ps1 " (%s)") \[\e[1;34m\]$ \[\e[m\]'
+	PS1="$GREEN\u@\h $BLUE\W$YELLOW$(__git_ps1 " (%s)") $RED\$? $BLUE$ $ENDCOLOR"
 fi
 
 if [ -n "$DISPLAY" ]; then
