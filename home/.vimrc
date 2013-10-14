@@ -4,12 +4,12 @@
 " For multi-byte character support (CJK support, for example):
 " "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
+autocmd FileType ruby let g:pathogen_disabled = ['YouCompleteMe']
 execute pathogen#infect()
 syntax on
 set nocompatible " don't run in VI compatibility mode
 set exrc " read directory-specific config files
 set secure " restrictions for reading config files
-set background=dark
 set mouse=a
 " set autochdir " Change directory to the current buffer when opening files.
 set showcmd
@@ -112,7 +112,7 @@ map <F7> :if exists("g:syntax_on") <Bar>
 	\ endif <CR>
 
 filetype plugin indent on
-" Filetype specific stuff
+"" Filetype specific stuff
 "ruby
 autocmd FileType ruby compiler ruby
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -121,6 +121,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
+
+"Java
+let java_ignore_javadoc=1
 
 """ Plugins
 "" Vundle
@@ -135,12 +138,17 @@ Bundle 'gmarik/vundle'
 Bundle 'FredKSchott/CoVim'
 " Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
-Bundle 'Floobits/floobits-vim'
+" Bundle 'Floobits/floobits-vim'
 " needs to be moved to ~/.vim/bundle/Floobits
 Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
 " Bundle 'Shougo/neocomplete.vim'
 Bundle 'terryma/vim-smooth-scroll'
+Bundle 'Shougo/vimshell.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Conque-Shell'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'altercation/vim-colors-solarized'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
