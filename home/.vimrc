@@ -124,6 +124,7 @@ highlight Pmenu ctermbg=238 gui=bold
 
 "Java
 let java_ignore_javadoc=1
+autocmd FileType java nmap <F11> :!javac % && java `basename % .java`<CR>
 
 """ Plugins
 "" Vundle
