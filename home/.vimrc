@@ -150,6 +150,7 @@ Bundle 'Shougo/vimproc.vim'
 Bundle 'Conque-Shell'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'jcf/vim-latex'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
@@ -167,6 +168,9 @@ let g:netrw_altv = 1
 " latex plugin
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
+let g:Tex_AutoFolding = 0
+au BufWritePost *.tex silent !pdflatex --shell-escape %
+au BufWritePre *.tex retab
 
 " YouCompleteMe
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>

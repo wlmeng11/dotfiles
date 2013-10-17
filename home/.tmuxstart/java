@@ -1,5 +1,8 @@
 new_session -n sentences
-send_keys 0.0 "cd ~/workspace/compsci/" "Enter"
+send_keys 0.0 "cd ~/workspace/compsci/sentences" "Enter"
 send_keys 0.0 "ls" "Enter"
-set_path ~/workspace/compsci/
+
 new_window -n exercises
+send_keys 1.0 "cd ~/workspace/compsci/" "Enter"
+
+set_path ~/workspace/compsci/
