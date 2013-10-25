@@ -14,9 +14,11 @@ YELLOW="\[\e[1;33m\]"
 RED="\[\e[1;31m\]"
 ENDCOLOR="\[\e[m\]"
 if [ $TERM = "dumb" ]; then
-	PS1='\u@\h \W$(__git_ps1 " (%s)") $ '
+	#PS1="\u@\h \W$(echo '$(__git_ps1 " (%s)")') \$? $ "
+	PS1="\u@\h \W [\$?] $(echo '$(__git_ps1 " (%s)")') $ "
 else
-	PS1="$GREEN\u@\h $BLUE\W$YELLOW$(__git_ps1 " (%s)") $RED\$? $BLUE$ $ENDCOLOR"
+	#PS1="$GREEN\u@\h $BLUE\W$YELLOW$(__git_ps1 " (%s)") $RED\$? $BLUE\$ $ENDCOLOR"
+	PS1="$GREEN\u@\h $BLUE\W $RED[\$?] $YELLOW$(echo '$(__git_ps1 " (%s)")') $BLUE\$ $ENDCOLOR"
 fi
 
 if [ -n "$DISPLAY" ]; then
@@ -84,6 +86,7 @@ alias gvim='gvim -c "source ~/.vimrc"'
 
 alias freeze='killall -STOP'
 alias unfreeze='killall -CONT'
+alias reload='source ~/.bashrc'
 
 # Pacman aliases
 alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
