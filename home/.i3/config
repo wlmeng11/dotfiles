@@ -33,6 +33,7 @@ exec --no-startup-id xbacklight -set 50
 for_window [class="[.]*"] floating enable;
 
 for_window [class="Firefox" instance="Navigator"] floating disable;
+for_window [class="Chromium" ] floating disable;
 for_window [class="URxvt"] floating disable;
 for_window [class="Gvim"] floating disable;
 for_window [class="Vi"] floating disable; # for gvim sessions started in terminal then detached
@@ -42,12 +43,16 @@ for_window [title="wlmeng - File Manager"] floating disable; # thunar default ma
 for_window [class="Emacs" ] floating disable;
 for_window [title="<Student Version> MATLAB R2013a"] floating disable;
 for_window [class="VirtualBox" ] floating enable;
+for_window [instance="sun-awt-X11-XFramePeer" ] floating disable;
+for_window [class="libreoffice-writer"] floating disable;
+for_window [instance="VCLSalFrame"] floating disable;
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="utility"] floating enable
 for_window [window_role="toolbar"] floating enable
 for_window [window_role="splash"] floating enable
 for_window [title="VIM - ATTENTION"] floating enable
+for_window [title="Print"] floating enable;
 
 # Floating borderless windows
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle

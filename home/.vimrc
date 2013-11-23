@@ -26,6 +26,7 @@ set shiftwidth=4
 set enc=utf8 " set encoding to utf8 for gvim
 
 set number " show line numbers, use ":set nu!" to disable
+set relativenumber
 set modeline
 set ls=2 " always show filename at bottome
 set foldmethod=syntax
@@ -59,8 +60,12 @@ function! TrimWhiteSpace()
   %s/\s*$//
   ''
 :endfunction
+"autocmd BufWritePre * execute TrimWhiteSpace()
+"autocmd BufWritePost * normal ``
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.o,*.d,*.pdf
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar
+set wildignore+=*.gif,*.png,*.jpg,*.o,*.d,*.pdf
+set wildignore+=*.aux,*.log,*.pyg
 
 " tmux pane integration
 if exists('$TMUX')
@@ -90,18 +95,19 @@ endif
 
 " reload vimrc with \r
 map <Leader>r :source ~/.vimrc<CR>
-map \033[27;5;9~ :bnext
+map \033[27;5;9~ :bnext<CR>
 map [27;5;9~ :bn<CR>
 " map   <Control><Tab> :bn<CR>
 map [Z :bp<CR>
 " map   <Control><Shift><Tab> :bp<CR>
 
+" opposite of Join lines
 nnoremap K i<CR><Esc>
 
 " bind <F2> to display time and date
 map <F2> :echo 'Current time is ' . strftime('%c')<CR>
 " bind <F3> to toggle line numbers
-map <F3> :set nu! <CR>
+map <F3> :set nu! <CR> :set rnu! <CR>
 " bind <F5> to toggle word-wrap
 map <F5> :set nowrap! <CR>
 " bind <F7> to toggle syntax highlighting
@@ -110,6 +116,7 @@ map <F7> :if exists("g:syntax_on") <Bar>
 	\ else <Bar>
 	\ syntax enable <Bar>
 	\ endif <CR>
+map <C-s> :set spell!<CR>
 
 filetype plugin indent on
 "" Filetype specific stuff
@@ -124,7 +131,21 @@ highlight Pmenu ctermbg=238 gui=bold
 
 "Java
 let java_ignore_javadoc=1
-autocmd FileType java nmap <F11> :!javac % && java `basename % .java`<CR>
+autocmd FileType java nmap <F11> :w<CR>:!javac % && java `basename % .java`<CR>
+
+" LaTeX
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+let g:Tex_AutoFolding = 0
+au BufWritePost *.tex silent !pdflatex --shell-escape %
+au FileType tex nmap <F9> :!pdflatex --shell-escape %<CR>
+au BufWritePre *.tex retab
+let g:tex_noindent_env = 'document\|verbatim\|comment\|lstlisting\|minted'
+"autocmd FileType tex set et
+
+" LISP
+" let g:slimv_swank_cmd = '! xterm -e bigloo --load ~/.vim/bundle/slimv/slime/start-swank.lisp &'
+
 
 """ Plugins
 "" Vundle
@@ -150,7 +171,8 @@ Bundle 'Shougo/vimproc.vim'
 Bundle 'Conque-Shell'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'jcf/vim-latex'
+Bundle 'vim-scripts/slimv.vim'
+Bundle 'wlmeng11/vim-latex'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
@@ -164,13 +186,6 @@ let g:netrw_liststyle=3 " tree style
 " file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-
-" latex plugin
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-let g:Tex_AutoFolding = 0
-au BufWritePost *.tex silent !pdflatex --shell-escape %
-au BufWritePre *.tex retab
 
 " YouCompleteMe
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
