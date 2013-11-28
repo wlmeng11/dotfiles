@@ -26,6 +26,9 @@ exec --no-startup-id gnome-screensaver
 exec --no-startup-id clipit # clipboard manager
 exec --no-startup-id gpg-agent --server
 exec --no-startup-id gtk-redshift -l 37.44:-122.14 -t 6500:4700
+exec --no-startup-id xcompmgr
+exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id pidgin
 
 exec --no-startup-id pactl set-sink-volume 0 '20%'
 exec --no-startup-id xbacklight -set 50
@@ -33,11 +36,13 @@ exec --no-startup-id xbacklight -set 50
 for_window [class="[.]*"] floating enable;
 
 for_window [class="Firefox" instance="Navigator"] floating disable;
+for_window [class="Iceweasel" instance="Navigator"] floating disable;
 for_window [class="Chromium" ] floating disable;
 for_window [class="URxvt"] floating disable;
 for_window [class="Gvim"] floating disable;
 for_window [class="Vi"] floating disable; # for gvim sessions started in terminal then detached
 for_window [class="Thunderbird" instance="Mail"] floating disable;
+for_window [class="Icedove" instance="Mail"] floating disable;
 for_window [class="Evince"] floating disable;
 for_window [title="wlmeng - File Manager"] floating disable; # thunar default main window
 for_window [class="Emacs" ] floating disable;
@@ -46,6 +51,7 @@ for_window [class="VirtualBox" ] floating enable;
 for_window [instance="sun-awt-X11-XFramePeer" ] floating disable;
 for_window [class="libreoffice-writer"] floating disable;
 for_window [instance="VCLSalFrame"] floating disable;
+for_window [class="Wine" instance="SketchUp.exe" ] floating disable;
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="utility"] floating enable
@@ -232,12 +238,14 @@ bindsym Mod4+Right exec i3-msg move workspace to output right
 
 bar {
 	output VGA1
-	status_command i3status --config ~/.i3/i3status.conf
+	#status_command i3status --config ~/.i3/i3status.conf
+	status_command i3status
 	tray_output primary
 }
 bar {
 	output DP1
-	status_command i3status --config ~/.i3/i3status.conf
+	#status_command i3status --config ~/.i3/i3status.conf
+	status_command i3status
 	tray_output primary
 }
 bar {
@@ -246,5 +254,6 @@ bar {
 	modifier $mod
 	# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	# font pango:DejaVu Sans Mono 10
-	status_command i3status --config ~/.i3/i3status.conf
+	#status_command i3status --config ~/.i3/i3status.conf
+	status_command i3status
 }
