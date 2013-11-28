@@ -157,7 +157,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-Bundle 'FredKSchott/CoVim'
+" Bundle 'FredKSchott/CoVim'
 " Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 " Bundle 'Floobits/floobits-vim'
@@ -166,6 +166,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
 " Bundle 'Shougo/neocomplete.vim'
 Bundle 'terryma/vim-smooth-scroll'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Conque-Shell'
@@ -173,6 +174,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/slimv.vim'
 Bundle 'wlmeng11/vim-latex'
+Bundle 'vim-scripts/minibufexpl.vim'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1

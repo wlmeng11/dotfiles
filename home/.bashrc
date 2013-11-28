@@ -6,7 +6,8 @@
 [[ $- != *i* ]] && return
 
 #PS1='[\u@\h \W]\$ ' #Standard PS1
-[[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
+#[[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
+[[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
 
 GREEN="\[\e[1;32m\]"
 BLUE="\[\e[1;34m\]"
@@ -38,10 +39,13 @@ fi
 # Export some variables
 export BC_ENV_ARGS=~/.bcrc
 export ANDROID_JAVA_HOME=/opt/java6
+export CLASSPATH=./
+export CLASSPATH=$CLASSPATH:/usr/share/java/*
 
 PATH=$PATH:/opt/android-sdk/platform-tools/
 PATH=$PATH:/home/wlmeng/bin
 PATH=$PATH:/home/wlmeng/workspace/robotics/ucpp/ucpp
+PATH=$PATH:/home/wlmeng/bin/tmuxstart
 export PATH
 
 ulimit -u 1000 # Limit nproc to prevent fork bombs
