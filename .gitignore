@@ -1,2 +1,4 @@
 # Ignore VIM files
 *.swp
+
+home/.vim/bundle/*
