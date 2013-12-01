@@ -16,5 +16,5 @@ nitrogen --restore # render wallpaper
 # reload i3bar without reloading i3wm
 killall i3bar
 for i in 0 1 2; do
-	i3bar --bar_id=bar-$i
+	i3bar --bar_id=bar-$i &
 done
