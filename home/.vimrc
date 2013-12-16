@@ -137,8 +137,8 @@ autocmd FileType java nmap <F11> :w<CR>:!javac % && java `basename % .java`<CR>
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 let g:Tex_AutoFolding = 0
-au BufWritePost *.tex silent !pdflatex --shell-escape %
-au FileType tex nmap <F9> :!pdflatex --shell-escape %<CR>
+au BufWritePost *.tex silent !pdflatex -interaction nonstopmode --shell-escape %
+au FileType tex nmap <F9> :!pdflatex -interaction nonstopmode --shell-escape %<CR>
 au BufWritePre *.tex retab
 let g:tex_noindent_env = 'document\|verbatim\|comment\|lstlisting\|minted'
 "autocmd FileType tex set et
@@ -175,6 +175,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/slimv.vim'
 Bundle 'wlmeng11/vim-latex'
 Bundle 'vim-scripts/minibufexpl.vim'
+Bundle 'Raimondi/delimitMate'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1

@@ -24,7 +24,8 @@ exec --no-startup-id nm-applet # Network Manager
 exec --no-startup-id synapse # program launcher
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id clipit # clipboard manager
-exec --no-startup-id gpg-agent --server
+#exec --no-startup-id gpg-agent --daemon
+exec --no-startup-id gpg-agent --daemon --enable-ssh-support --write-env-file ~/.gpg-agent-info
 exec --no-startup-id gtk-redshift -l 37.44:-122.14 -t 6500:4700
 exec --no-startup-id xcompmgr
 exec --no-startup-id setxkbmap -option caps:escape
@@ -53,6 +54,7 @@ for_window [class="libreoffice-writer"] floating disable;
 for_window [instance="VCLSalFrame"] floating disable;
 for_window [class="Wine" instance="SketchUp.exe" ] floating disable;
 
+for_window [class="Icedove" instance="Mailnews"] floating enable;
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="utility"] floating enable
 for_window [window_role="toolbar"] floating enable
@@ -79,6 +81,9 @@ floating_modifier $mod
 
 # take screenshot with PrintScreen
 bindcode 107 exec scrot -e 'mv $f /home/wlmeng/Pictures/screenshots/'
+
+bindcode 202 exec i3lock
+bindsym XF86Lock exec i3lock
 
 # check external display fith Fn+<F7>
 bindcode 235 exec ~/bin/xdisplay.sh
@@ -170,6 +175,7 @@ bindsym $mod+comma exec i3-input -F 'rename workspace to %s' -P 'New name: '
 # Assign programs to specific workspaces
 assign [class="Pidgin"] 10:chat
 assign [class="Thunderbird"] 9:mail
+assign [class="Icedove"] 9:mail
 
 # switch to workspace
 bindsym $mod+1 workspace 1:web
