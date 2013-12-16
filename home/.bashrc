@@ -8,6 +8,7 @@
 #PS1='[\u@\h \W]\$ ' #Standard PS1
 #[[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
 [[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
+[[ -f ~/.bash-errs ]] && . ~/.bash-errs
 
 GREEN="\[\e[1;32m\]"
 BLUE="\[\e[1;34m\]"
