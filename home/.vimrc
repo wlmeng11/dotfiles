@@ -8,6 +8,7 @@ autocmd FileType ruby let g:pathogen_disabled = ['YouCompleteMe']
 execute pathogen#infect()
 syntax on
 set nocompatible " don't run in VI compatibility mode
+set timeout timeoutlen=3000 ttimeoutlen=100 " shorten terminal escape wait time
 set exrc " read directory-specific config files
 set secure " restrictions for reading config files
 set mouse=a
