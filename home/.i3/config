@@ -12,24 +12,23 @@
 # Use Alt key as mod
 set $mod Mod1
 
-exec --no-startup-id ~/bin/mouseRules.sh
+exec --no-startup-id ~/bin/mouse.sh
+exec --no-startup-id ~/bin/keymap.sh
+exec --no-startup-id ~/bin/display.sh
 
 ##########
 
 # Startup programs
-exec --no-startup-id compton --backend glx --sw-opti --vsync opengl-swc --paint-on-overlay # Compositing
-exec --no-startup-id nitrogen --restore # set wallpaper
+exec --no-startup-id compton --backend glx --sw-opti --vsync opengl-swc --paint-on-overlay || xcompmgr # Compositing
 exec --no-startup-id xfce4-volumed # volume control
 exec --no-startup-id nm-applet # Network Manager
 exec --no-startup-id synapse # program launcher
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id clipit # clipboard manager
-#exec --no-startup-id gpg-agent --daemon
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support --write-env-file ~/.gpg-agent-info
 exec --no-startup-id gtk-redshift -l 37.44:-122.14 -t 6500:4700
-exec --no-startup-id xcompmgr
-exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id pidgin
+exec --no-startup-id /usr/lib/eclipse/eclimd
 
 exec --no-startup-id pactl set-sink-volume 0 '20%'
 exec --no-startup-id xbacklight -set 50

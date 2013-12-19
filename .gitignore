@@ -2,3 +2,6 @@
 *.swp
 
 home/.vim/bundle/*
+
+*.gpg-agent-info
+*.rsa*
