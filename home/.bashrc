@@ -1,25 +1,35 @@
 #
-# ~/.bashrc
+# William Meng's ~/.bashrc
 #
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#PS1='[\u@\h \W]\$ ' #Standard PS1
-#[[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
 [[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
 [[ -f ~/.bash-errs ]] && . ~/.bash-errs
 
+# Greeting
+NAME=William
+CURRENT_SHELL=$(echo $0 | sed 's/-//' | sed 's/.*/\U&/')
+HOUR=$(date +"%H")
+GREETING=morning
+if [ $HOUR -ge 12 ]; then
+	GREETING=afternoon
+fi
+if [ $HOUR -ge 18 ]; then
+	GREETING=evening
+fi
+echo "Good $GREETING, $NAME. This is $CURRENT_SHELL. I'm ready for my first command."
+
+# PS1 prompt
 GREEN="\[\e[1;32m\]"
 BLUE="\[\e[1;34m\]"
 YELLOW="\[\e[1;33m\]"
 RED="\[\e[1;31m\]"
 ENDCOLOR="\[\e[m\]"
 if [ $TERM = "dumb" ]; then
-	#PS1="\u@\h \W$(echo '$(__git_ps1 " (%s)")') \$? $ "
 	PS1="\u@\h \W [\$?] $(echo '$(__git_ps1 " (%s)")') $ "
 else
-	#PS1="$GREEN\u@\h $BLUE\W$YELLOW$(__git_ps1 " (%s)") $RED\$? $BLUE\$ $ENDCOLOR"
 	PS1="$GREEN\u@\h $BLUE\W $RED[\$?] $YELLOW$(echo '$(__git_ps1 " (%s)")') $BLUE\$ $ENDCOLOR"
 fi
 
