@@ -21,7 +21,7 @@
 	;(load-theme 'solarized-dark t) ;; set color scheme
 	(require 'color-theme-solarized)
 	(tool-bar-mode -1) ;; disable toolbar
-	(set-face-attribute 'default nil :height 120) ;; font size 12
+	(set-face-attribute 'default nil :height 100) ;; font size 12
 	)
   ;; else (optional)
   ;; for terminal mode only
