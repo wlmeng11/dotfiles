@@ -1,8 +1,7 @@
 #!/bin/bash
-
-# BEGIN code from github.com/arnoo/git-deliver
 #
 # Copyright 2012 Arnaud Betremieux <arno@arnoo.net>
+# Copyright 2013 William Meng
 #
 # The program in this file is free software: you can redistribute it
 # and/or modify it under the terms of the GNU General Public License
@@ -35,7 +34,6 @@ function echo_red
         echo "$msg"
         [[ $USECOLOR == true ]] && echo -ne "\033[0m"
         }
-# END code from github.com/arnoo/git-deliver
 
 HOME_FILES=$(ls -A ./home/)
 DIR=$(pwd)/home

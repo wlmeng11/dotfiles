@@ -1,3 +1,8 @@
+;; William Meng's emacs config
+;; Compatible with emacs23
+
+(add-to-list 'load-path "~/.emacs.d/")
+
 ;; marmalade repos
 (require 'package)
 (add-to-list 'package-archives 
@@ -13,7 +18,8 @@
 
 (if (display-graphic-p)
   (progn ;; for graphical mode only
-	(load-theme 'solarized-dark t) ;; set color scheme
+	;(load-theme 'solarized-dark t) ;; set color scheme
+	(require 'color-theme-solarized)
 	(tool-bar-mode -1) ;; disable toolbar
 	(set-face-attribute 'default nil :height 120) ;; font size 12
 	)
@@ -39,3 +45,8 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
   )
+
+;; python-mode
+(autoload 'python-mode "python-mode" "Python Mode." t)
+ (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+ (add-to-list 'interpreter-mode-alist '("python" . python-mode))
