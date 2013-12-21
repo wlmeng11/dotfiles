@@ -34,6 +34,9 @@ set foldmethod=syntax
 set foldlevelstart=99 " initially expand all folds
 set fdc=1 " show folds in left column
 
+set background=dark
+colorscheme solarized
+
 set ofu=syntaxcomplete#Complete " auto-complete in insert mode
 " <C-n>			Keyword completion
 " <C-x><C-f>	Filename completion
