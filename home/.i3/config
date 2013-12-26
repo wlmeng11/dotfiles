@@ -79,7 +79,8 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # take screenshot with PrintScreen
-bindcode 107 exec scrot -e 'mv $f /home/wlmeng/Pictures/screenshots/'
+bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'
+bindsym $mod+Print exec scrot '%Y-%m-%d-%T_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/' -s # select region with mouse
 
 bindcode 202 exec i3lock
 bindsym XF86Lock exec i3lock
