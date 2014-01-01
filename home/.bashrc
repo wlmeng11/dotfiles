@@ -53,6 +53,7 @@ export ANDROID_JAVA_HOME=/opt/java6
 export CLASSPATH=./
 export CLASSPATH=$CLASSPATH:/usr/share/java/*
 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/opt/android-sdk/platform-tools/
 PATH=$PATH:/home/wlmeng/bin
 PATH=$PATH:/home/wlmeng/workspace/robotics/ucpp/ucpp
