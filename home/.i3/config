@@ -270,6 +270,6 @@ bar {
 	modifier $mod
 	# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	# font pango:DejaVu Sans Mono 10
-	#status_command i3status --config ~/.i3/i3status.conf
-	status_command i3status
+	status_command i3status --config ~/.i3/i3status.conf
+	#status_command i3status
 }
