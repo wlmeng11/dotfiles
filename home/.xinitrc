@@ -15,28 +15,9 @@ if [ -f $HOME/.Xmodmap ]; then
 	/usr/bin/xmodmap $HOME/.Xmodmap
 fi
 
-if [[ $1 == "gnome" ]]
-then
-	exec gnome-session
-elif [[ $1 == "kde" ]]
-then
-	exec startkde
-elif [[ $1 == "xfce" ]]
-then
-	exec startxfce4
-elif [[ $1 == "enlightenment" ]]
-then
-	exec enlightenment_start
-elif [[ $1 == "dwm" ]]
-then
-	exec dwm
-elif [[ $1 == "i3" ]]
-then
-	exec dbus-launch --exit-with-session /usr/bin/i3
-else
-	echo "No argument supplied; using default"
-	# echo "Choose a window manager"
-	# exec startxfce4 # XFCE by default
-	exec dbus-launch --exit-with-session /usr/bin/i3 # Use i3 by default
-fi
+#exec dbus-launch --exit-with-session /usr/bin/i3 # Use i3 by default
 # ...or the Window Manager of your choice
+while true
+	do
+	/usr/bin/dwm 2> /dev/null
+done
