@@ -46,7 +46,7 @@ for f in $HOME_FILES; do
 	elif [ -f $f ]; then
 		echo_red "File $f already exists!"
 	elif [ -d $f ]; then
-		echo "Directory $f already exists!"
+		echo_red "Directory $f already exists!"
 	else
 		echo_green "ln -s $DIR/$f ~"
 		ln -s $DIR/$f ~
