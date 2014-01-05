@@ -18,8 +18,9 @@
 
 (if (display-graphic-p)
   (progn ;; for graphical mode only
-	;(load-theme 'solarized-dark t) ;; set color scheme
+	;(load-theme 'solarized-dark t) ;; set color scheme in emacs24
 	(require 'color-theme-solarized)
+	(color-theme-solarized-light)
 	(tool-bar-mode -1) ;; disable toolbar
 	(set-face-attribute 'default nil :height 100) ;; font size 12
 	)
