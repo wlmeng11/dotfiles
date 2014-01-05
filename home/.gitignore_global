@@ -1,7 +1,9 @@
 # Ignore VIM files
 *.swp
+*.swo
 
 # Ignore build outputs
 *.class
 *.o
 *.d
+*.pyc
