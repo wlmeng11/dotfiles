@@ -36,7 +36,7 @@ fi
 if [ -n "$DISPLAY" ]; then
 	# Check for detached tmux sessions and attach to it, else create new
 	[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
-    export EDITOR=gvim
+    export EDITOR=vim
 	setxkbmap -option caps:escape
 else
     export EDITOR=vim
@@ -95,11 +95,12 @@ alias cp="cp -i"
 alias rm="rm -i"
 alias mv="mv -i"
 
-alias killwithfire="killall -9"
-alias vim='vim -c "source ~/.vimrc"'
-alias vi='vi -c "source ~/.vimrc"'
+alias vim='env TERM=screen-256color vim -c "source ~/.vimrc"'
+alias vi='vim'
 alias gvim='gvim -c "source ~/.vimrc"'
+alias emacs='env TERM=xterm-256color emacs -nw'
 
+alias killwithfire="killall -9"
 alias freeze='killall -STOP'
 alias unfreeze='killall -CONT'
 alias reload='source ~/.bashrc'
