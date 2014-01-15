@@ -6,32 +6,16 @@
 [[ $- != *i* ]] && return
 
 [[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
-[[ -f ~/.bash-errs ]] && . ~/.bash-errs
+[[ -f ~/.bash_func ]] && . ~/.bash_func # custom bash functions
 
-# Greeting
-NAME=William
-CURRENT_SHELL=$(echo $0 | sed 's/-//' | sed 's/.*/\U&/')
-HOUR=$(date +"%H")
-GREETING=morning
-if [ $HOUR -ge 12 ]; then
-	GREETING=afternoon
-fi
-if [ $HOUR -ge 18 ]; then
-	GREETING=evening
-fi
-echo "Good $GREETING, $NAME. This is $CURRENT_SHELL. I'm ready for my first command."
+# RVM
+[[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion" # RVM bash completion
 
-# PS1 prompt
-GREEN="\[\e[1;32m\]"
-BLUE="\[\e[1;34m\]"
-YELLOW="\[\e[1;33m\]"
-RED="\[\e[1;31m\]"
-ENDCOLOR="\[\e[m\]"
-if [ $TERM = "dumb" ]; then
-	PS1="\u@\h \W [\$?] $(echo '$(__git_ps1 " (%s)")') $ "
-else
-	PS1="$GREEN\u@\h $BLUE\W $RED[\$?] $YELLOW$(echo '$(__git_ps1 " (%s)")') $BLUE\$ $ENDCOLOR"
-fi
+# Call custom functions
+greeting
+set_prompt
+trap 'err_handle' ERR
 
 if [ -n "$DISPLAY" ]; then
 	# Check for detached tmux sessions and attach to it, else create new
@@ -42,11 +26,6 @@ else
     export EDITOR=vim
 fi
 
-# RVM
-[[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-[[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion" # RVM bash completion
-
-
 # Export some variables
 export BC_ENV_ARGS=~/.bcrc
 export ANDROID_JAVA_HOME=/opt/java6
@@ -55,9 +34,9 @@ export CLASSPATH=$CLASSPATH:/usr/share/java/*
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/opt/android-sdk/platform-tools/
-PATH=$PATH:/home/wlmeng/bin
-PATH=$PATH:/home/wlmeng/workspace/robotics/ucpp/ucpp
-PATH=$PATH:/home/wlmeng/bin/tmuxstart
+PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/workspace/robotics/ucpp/ucpp
+PATH=$PATH:$HOME/bin/tmuxstart
 export PATH
 
 ulimit -u 1000 # Limit nproc to prevent fork bombs
