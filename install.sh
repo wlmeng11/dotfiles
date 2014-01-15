@@ -35,7 +35,7 @@ function echo_red
         [[ $USECOLOR == true ]] && echo -ne "\033[0m"
         }
 
-HOME_FILES=$(ls -A ./home/)
+HOME_FILES=$(ls -A ./home/ | grep -v .swp)
 DIR=$(pwd)/home
 
 cd ~
