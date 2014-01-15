@@ -141,7 +141,7 @@ autocmd FileType java nmap <F11> :w<CR>:!javac % && java `basename % .java`<CR>
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 let g:Tex_AutoFolding = 0
-au BufWritePost *.tex silent !pdflatex -interaction nonstopmode --shell-escape %
+au BufWritePost *.tex !pdflatex -interaction nonstopmode --shell-escape %
 au FileType tex nmap <F9> :!pdflatex -interaction nonstopmode --shell-escape %<CR>
 au BufWritePre *.tex retab
 let g:tex_noindent_env = 'document\|verbatim\|comment\|lstlisting\|minted'
@@ -180,6 +180,7 @@ Bundle 'vim-scripts/slimv.vim'
 Bundle 'wlmeng11/vim-latex'
 Bundle 'vim-scripts/minibufexpl.vim'
 Bundle 'Raimondi/delimitMate'
+Bundle 'vim-scripts/openscad.vim'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
