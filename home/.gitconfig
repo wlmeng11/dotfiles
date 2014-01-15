@@ -11,11 +11,15 @@
 	unstage = reset HEAD --
 	graph = log --graph --oneline --decorate
 [diff]
-	tool = gvimdiff
+	tool = vimdiff
 [merge]
-	tool = gvimdiff
+	tool = vimdiff
 [push]
 	default = current
 [core]
 	excludesfile = /home/wlmeng/.gitignore_global
-	editor = gvim -f
+	editor = env TERM=screen-256color vim -f
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true
