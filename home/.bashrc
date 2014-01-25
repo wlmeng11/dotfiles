@@ -27,6 +27,7 @@ else
 fi
 
 # Export some variables
+export TZ="/usr/share/zoneinfo/US/Pacific"
 export BC_ENV_ARGS=~/.bcrc
 export ANDROID_JAVA_HOME=/opt/java6
 export CLASSPATH=./
@@ -40,8 +41,9 @@ PATH=$PATH:$HOME/bin/tmuxstart
 export PATH
 
 ulimit -u 1000 # Limit nproc to prevent fork bombs
+shopt -s extglob # extended pattern language
 shopt -s autocd
-shopt -s histappend
+shopt -s histappend # append to history file
 PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT="%h/%d -- %H:%M:%S "
 
@@ -65,7 +67,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 #alias l='ls -CF'
-alias l='ls'
+alias l='ls -dC !(*.class|*.o)'
 alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 alias lstree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
