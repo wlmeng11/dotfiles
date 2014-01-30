@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 [[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
-[[ -f ~/.bash_func ]] && . ~/.bash_func # custom bash functions
+[[ -f ~/bin/func.sh ]] && . ~/bin/func.sh # custom bash functions
 
 # RVM
 [[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
