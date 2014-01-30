@@ -1,5 +1,7 @@
 # Ignore VIM files
 *.swp
+# emacs
+*~
 
 home/.vim/bundle/*
 home/.config/*
