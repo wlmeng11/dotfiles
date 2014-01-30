@@ -4,7 +4,6 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-zsh
 
 [[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
 [[ -f ~/.bash_func ]] && . ~/.bash_func # custom bash functions

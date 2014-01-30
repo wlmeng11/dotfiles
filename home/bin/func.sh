@@ -48,3 +48,14 @@ function set_prompt() {
 		PS1="$GREEN\u@\h $BLUE\W $RED[\$?] $YELLOW$(echo '$(__git_ps1 " (%s)")') $BLUE\$ $ENDCOLOR"
 	fi
 }
+
+# Custom functions to check for ssh and tty
+is_ssh() {
+	[[ -n $SSH_CONNECTION ]] || [[ -n $SSH_CLIENT ]] || [[ -n $SSH_TTY ]]
+}
+is_tty() {
+	[[ $(tty) == /dev/tty* ]]
+}
+non_gui() {
+	is_ssh || is_tty
+}
