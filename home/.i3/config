@@ -28,6 +28,7 @@ exec --no-startup-id clipit # clipboard manager
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support --write-env-file ~/.gpg-agent-info
 exec --no-startup-id gtk-redshift -l 37.44:-122.14 -t 6500:4700
 exec --no-startup-id pidgin
+exec --no-startup-id xcape
 exec --no-startup-id /usr/lib/eclipse/eclimd
 
 exec --no-startup-id pactl set-sink-volume 0 '20%'

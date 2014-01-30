@@ -11,15 +11,15 @@ case "$1" in
 		i3-msg exit
 		;;
 	suspend)
-		gksudo pm-suspend
+		gksudo -g pm-suspend
 		;;
 	hibernate)
 		;;
 	reboot)
-		gksudo reboot
+		gksudo -g reboot
 		;;
 	shutdown)
-		gksudo shutdown now
+		gksudo -g shutdown now
 		;;
 	*)
 		echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
