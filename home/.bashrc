@@ -4,6 +4,7 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+zsh
 
 [[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
 [[ -f ~/.bash_func ]] && . ~/.bash_func # custom bash functions
@@ -40,7 +41,7 @@ PATH=$PATH:$HOME/workspace/robotics/ucpp/ucpp
 PATH=$PATH:$HOME/bin/tmuxstart
 export PATH
 
-ulimit -u 1000 # Limit nproc to prevent fork bombs
+#ulimit -u 1000 # Limit nproc to prevent fork bombs
 shopt -s extglob # extended pattern language
 shopt -s autocd
 shopt -s histappend # append to history file
@@ -79,7 +80,7 @@ alias mv="mv -i"
 alias vim='env TERM=screen-256color vim -c "source ~/.vimrc"'
 alias vi='vim'
 alias gvim='gvim -c "source ~/.vimrc"'
-alias emacs='env TERM=xterm-256color emacs -nw'
+alias emacs='env TERM=xterm-256color emacs'
 
 alias killwithfire="killall -9"
 alias freeze='killall -STOP'

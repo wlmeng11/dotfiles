@@ -10,7 +10,7 @@ function firstname() {
 }
 
 function get_shell() {
-	echo $0 | sed 's/-//' | sed 's/.*/\U&/'
+	ps --pid $$ | tail -1 | awk '{print $4}' | sed 's/.*/\U&/'
 }
 
 # Space Odyssey style greeting

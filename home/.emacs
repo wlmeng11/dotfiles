@@ -17,7 +17,8 @@
 (setq inhibit-splash-screen t) ; disable splash screen
 (global-linum-mode t) ;; enable line numbers
 
-(color-theme-solarized-light)
+(load-theme 'solarized-light t) ; emacs24
+;(color-theme-solarized-light) ; emacs23
 
 ;; python-mode
 (autoload 'python-mode "python-mode" "Python Mode." t)
