@@ -1,3 +1,9 @@
+#
+# William Meng's ~/.zshrc
+#
+# Install oh-my-zsh with:
+# curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+#
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -6,6 +12,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
+# Or just source the theme file...
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -43,13 +50,34 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git wd zsh-syntax-highlighting)
 
-setopt correct
+# Set options
+setopt AUTO_CD           # implicate cd for non-commands
+setopt AUTO_PUSHD          # Push dirs into history
+setopt CD_ABLE_VARS       # read vars in cd
+setopt CORRECT            # correct spelling
+setopt COMPLETE_IN_WORD       # complete commands anywhere in the word
+setopt NOTIFY              # Notify when jobs finish
+#setopt C_BASES             # 0xFF
+setopt BASH_AUTO_LIST      # Autolist options on repetition of ambiguous args
+setopt CHASE_LINKS         # Follow links in cds
+setopt ALWAYS_TO_END       # Move to the end on complete completion
+setopt LIST_ROWS_FIRST     # Row orientation for menu
+setopt MULTIOS             # Allow Multiple pipes
+setopt MAGIC_EQUAL_SUBST   # Expand inside equals
+setopt EXTENDED_GLOB
+setopt hist_ignore_dups share_history inc_append_history extended_history
+HISTSIZE=500000
+SAVEHIST=5000000
 
+# Source some files
 source $ZSH/oh-my-zsh.sh
 source ~/wlmeng.zsh-theme
 source ~/bin/path.sh # set PATH
 source ~/bin/alias.sh
 source /usr/share/autojump/autojump.sh
+[[ -r "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"
+[[ -r "~/.rvm/scripts/completion" ]] && source "~/.rvm/scripts/completion" # RVM bash completion
+
 
 # User configuration
 if [ -n "$DISPLAY" ]; then
