@@ -1,20 +1,20 @@
-#!/bin/bash
-# Custom bash functions
+#!/bin/sh
+# Custom shell functions
 
-function fullname() {
+fullname() {
 	cat /etc/passwd | grep $USER | cut -d: -f5 | sed 's/,//g'
 }
 
-function firstname() {
+firstname() {
 	fullname | awk '{print $1}'
 }
 
-function get_shell() {
+get_shell() {
 	ps --pid $$ | tail -1 | awk '{print $4}' | sed 's/.*/\U&/'
 }
 
 # Space Odyssey style greeting
-function greeting() {
+greeting() {
 	# Greeting
 	local HOUR=$(date +"%H")
 	local GREETING=morning
@@ -28,7 +28,7 @@ function greeting() {
 }
 
 # Handle errors, HAL 9000 style
-function err_handle {
+err_handle() {
 	status=$?
 	lastcmd=$(history | tail -1 | sed 's/^ *[0-9]* *//')
 
@@ -36,7 +36,7 @@ function err_handle {
 }
 
 # set the PS1 prompt with colors, exit code, and git-branch info
-function set_prompt() {
+set_prompt() {
 	local GREEN="\[\e[1;32m\]"
 	local BLUE="\[\e[1;34m\]"
 	local YELLOW="\[\e[1;33m\]"
@@ -56,6 +56,6 @@ is_ssh() {
 is_tty() {
 	[[ $(tty) == /dev/tty* ]]
 }
-non_gui() {
-	is_ssh || is_tty
+is_gui() {
+	[[ -n "$DISPLAY" ]]
 }

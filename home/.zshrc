@@ -7,6 +7,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# Check for detached tmux sessions and attach to it, else create new
+[ is_gui ] && [ ! is_ssh ] && [[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -81,8 +84,6 @@ source /usr/share/autojump/autojump.sh
 
 # User configuration
 if [ -n "$DISPLAY" ]; then
-	# Check for detached tmux sessions and attach to it, else create new
-	[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
     export EDITOR=vim
 else
     export EDITOR=vim
