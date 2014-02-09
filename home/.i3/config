@@ -123,8 +123,8 @@ bindsym Mod1+Ctrl+t exec i3-sensible-terminal
 
 # other keybindings to applications
 bindsym Mod1+Ctrl+f exec thunar
-bindsym Mod4+f exec firefox
-bindsym Mod4+t exec thunderbird
+bindsym Mod4+f exec firefox || iceweasel
+bindsym Mod4+t exec thunderbird || icedove
 
 # kill focused window
 bindsym $mod+Shift+q kill
