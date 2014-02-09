@@ -1,11 +1,11 @@
 ;; William Meng's emacs config
 ;; Compatible with emacs23
 
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; marmalade repos
 (require 'package)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
 			 '("marmalade" .
 			   "http://marmalade-repo.org/packages/"))
 (package-initialize)
