@@ -28,6 +28,8 @@ alias vim='env TERM=screen-256color vim -c "source ~/.vimrc"'
 alias vi='vim'
 alias gvim='gvim -c "source ~/.vimrc"'
 alias emacs='env TERM=xterm-256color emacs'
+alias ed='ed -p:'
+alias red='red -p:'
 
 alias killwithfire="killall -9"
 alias freeze='killall -STOP'

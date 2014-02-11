@@ -7,8 +7,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+source ~/bin/func.sh
 # Check for detached tmux sessions and attach to it, else create new
-[ is_gui ] && [ ! is_ssh ] && [[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
+is_gui && ! is_ssh && [[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -68,7 +69,10 @@ setopt LIST_ROWS_FIRST     # Row orientation for menu
 setopt MULTIOS             # Allow Multiple pipes
 setopt MAGIC_EQUAL_SUBST   # Expand inside equals
 setopt EXTENDED_GLOB
-setopt hist_ignore_dups share_history inc_append_history extended_history
+setopt hist_ignore_dups
+setopt share_history
+setopt inc_append_history
+setopt extended_history
 HISTSIZE=500000
 SAVEHIST=5000000
 
@@ -83,11 +87,11 @@ source /usr/share/autojump/autojump.sh
 
 
 # User configuration
-if [ -n "$DISPLAY" ]; then
+# if [ -n "$DISPLAY" ]; then
+#     export EDITOR=vim
+# else
     export EDITOR=vim
-else
-    export EDITOR=vim
-fi
+# fi
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
