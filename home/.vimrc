@@ -181,6 +181,8 @@ Bundle 'wlmeng11/vim-latex'
 Bundle 'vim-scripts/minibufexpl.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'vim-scripts/openscad.vim'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1

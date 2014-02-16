@@ -2,6 +2,10 @@
 *.swp
 *.swo
 
+# Ignore EMACS fies
+\#*
+*~
+
 # Ignore build outputs
 *.class
 *.o
