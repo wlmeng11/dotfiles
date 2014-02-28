@@ -2,10 +2,11 @@
 source ~/bin/func.sh  && greeting
 
 local ssh_status="%{$fg_no_bold[red]%}$(is_ssh && echo 'ssh@%m ')"
+local root_status="%{$fg_bold[red]%}$(is_root && echo 'root ')"
 local symbol="$(is_root && echo \# || echo λ)"
-local ret_status="%(?:%{$fg_bold[green]%}${symbol} :%{$fg_bold[red]%}λ %s)"
+local ret_status="%(?:%{$fg_bold[green]%}${symbol} :%{$fg_bold[red]%}${symbol} %s)"
 local user="%{$fg[green]%}%n@%m"
-PROMPT='${ssh_status}${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+PROMPT='${ssh_status}${root_status}${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 #RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 autoload -U colors && colors

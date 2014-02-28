@@ -14,6 +14,7 @@ if ! cat /etc/group | grep sudo | grep $USER >/dev/null; then
 	su -c "gpasswd -a $USER sudo"
 fi
 
+echo "Do you have sudo?"
 if ! sudo -v >/dev/null; then
 	echo "You are not a sudoer in this shell."
 	echo 'Run "newgrp sudo" or relogin and rerun this script'
@@ -22,7 +23,10 @@ fi
 
 ./apt.sh
 
-sudo apt-get install -y -t wheezy-backports i3 tmux
+echo "Installing packages from wheezy-backports:"
+sudo apt-get install -y -t wheezy-backports \
+   	i3 \
+	tmux
 # Set i3wm as default for LightDM
 sudo sed -i 's/Exec=default/Exec=i3/' /usr/share/xsessions/lightdm-xsession.desktop
 
@@ -35,8 +39,11 @@ else
 	echo "ZSH is already the default shell for $USER"
 fi
 
-sudo apt-get install -y \
+echo "Installing packages from wheezy:"
+sudo apt-get install -y \ # Essential packages
 	vim-gtk \
-	autojump \
 	rxvt-unicode \
 	devscripts \
+
+sudo apt-get install -y \ # Optional packages
+	autojump \

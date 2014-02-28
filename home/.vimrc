@@ -36,6 +36,7 @@ set fdc=1 " show folds in left column
 
 set background=dark
 colorscheme solarized
+"let g:solarized_termcolors=256
 
 set ofu=syntaxcomplete#Complete " auto-complete in insert mode
 " <C-n>			Keyword completion
