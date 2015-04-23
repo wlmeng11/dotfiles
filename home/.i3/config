@@ -26,7 +26,7 @@ exec --no-startup-id synapse # program launcher
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id clipit # clipboard manager
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support --write-env-file ~/.gpg-agent-info
-exec --no-startup-id gtk-redshift -l 37.44:-122.14 -t 6500:4700
+exec --no-startup-id gtk-redshift -l 37.44:-122.14 -t 6500:4700 -b 0.4
 exec --no-startup-id pidgin
 exec --no-startup-id xcape
 exec --no-startup-id /usr/lib/eclipse/eclimd
@@ -268,7 +268,7 @@ bar {
 	output DP1
 	#status_command i3status --config ~/.i3/i3status.conf
 	status_command i3status
-	tray_output primary
+	#tray_output primary
 }
 bar {
 	output DP3
@@ -292,6 +292,6 @@ bar {
 	modifier $mod
 	# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	# font pango:DejaVu Sans Mono 10
-	status_command i3status --config ~/.i3/i3status.conf
-	#status_command i3status
+	#status_command i3status --config ~/.i3/i3status.conf
+	status_command i3status
 }

@@ -1,3 +1,5 @@
 #!/bin/bash
 
-exec setxkbmap -option caps:escape
+setxkbmap -option ctrl:nocaps
+xcape
+#setxkbmap dvorak
