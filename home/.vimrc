@@ -149,6 +149,9 @@ let g:tex_noindent_env = 'document\|verbatim\|comment\|lstlisting\|minted'
 " LISP
 " let g:slimv_swank_cmd = '! xterm -e bigloo --load ~/.vim/bundle/slimv/slime/start-swank.lisp &'
 
+" Arduino
+autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
+
 
 """"" PLUGIN CONFIGURATION
 "" Vundle
@@ -176,6 +179,7 @@ Bundle 'vim-scripts/openscad.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tomasr/molokai'
+Bundle 'jplaut/vim-arduino-ino'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
