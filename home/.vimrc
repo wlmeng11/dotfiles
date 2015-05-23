@@ -4,7 +4,6 @@
 " For multi-byte character support (CJK support, for example):
 " "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
-execute pathogen#infect()
 syntax on " enable syntax highlighting
 set nocompatible " don't run in VI compatibility mode
 set timeout timeoutlen=3000 ttimeoutlen=100 " shorten terminal escape wait time
@@ -132,7 +131,6 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby let g:pathogen_disabled = ['YouCompleteMe']
 
 "Java
 let java_ignore_javadoc=1
