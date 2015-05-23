@@ -49,7 +49,7 @@ for_window [title="wlmeng - File Manager"] floating disable; # thunar default ma
 for_window [class="Emacs" ] floating disable;
 for_window [title="<Student Version> MATLAB R2013a"] floating disable;
 for_window [class="VirtualBox" ] floating enable;
-for_window [instance="sun-awt-X11-XFramePeer" ] floating disable;
+for_window [instance="sun-awt-X11-XFramePeer" ] floating enable; # java programs
 for_window [class="libreoffice-writer"] floating disable;
 for_window [instance="VCLSalFrame"] floating disable;
 for_window [class="Wine" instance="SketchUp.exe" ] floating disable;
@@ -102,7 +102,8 @@ bindcode 202 exec i3lock
 bindsym XF86Lock exec i3lock
 
 # check external display fith Fn+<F7>
-bindcode 235 exec ~/bin/xdisplay.sh
+#bindcode 235 exec ~/bin/xdisplay.sh
+bindsym $mod+Home exec ~/bin/display.sh
 
 # toggle touchpad with Fn+<F8>
 bindcode 199 exec ~/bin/touchpadToggle.sh
@@ -122,7 +123,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym Mod1+Ctrl+t exec i3-sensible-terminal
 
 # other keybindings to applications
-bindsym Mod1+Ctrl+f exec thunar
+bindsym Mod1+Ctrl+f exec nautilus
 bindsym Mod4+f exec firefox || iceweasel
 bindsym Mod4+t exec thunderbird || icedove
 
