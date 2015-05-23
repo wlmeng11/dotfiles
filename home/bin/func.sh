@@ -14,6 +14,7 @@ get_shell() {
 }
 
 # Space Odyssey style greeting
+# set your name in finger info via the chfn command
 greeting() {
 	# Greeting
 	local HOUR=$(date +"%H")
