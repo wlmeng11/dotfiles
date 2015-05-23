@@ -1,17 +1,16 @@
-" .vimrc
+" William Meng's .vimrc file
 " " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
 " For multi-byte character support (CJK support, for example):
 " "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
-autocmd FileType ruby let g:pathogen_disabled = ['YouCompleteMe']
 execute pathogen#infect()
-syntax on
+syntax on " enable syntax highlighting
 set nocompatible " don't run in VI compatibility mode
 set timeout timeoutlen=3000 ttimeoutlen=100 " shorten terminal escape wait time
 set exrc " read directory-specific config files
 set secure " restrictions for reading config files
-set mouse=a
+set mouse=a " better mouse support
 " set autochdir " Change directory to the current buffer when opening files.
 set showcmd
 
@@ -27,15 +26,16 @@ set shiftwidth=4
 set enc=utf8 " set encoding to utf8 for gvim
 
 set number " show line numbers, use ":set nu!" to disable
-set relativenumber
+set relativenumber " use line numbers relative to current line
 set modeline
 set ls=2 " always show filename at bottome
 set foldmethod=syntax
 set foldlevelstart=99 " initially expand all folds
 set fdc=1 " show folds in left column
 
+""" VISUAL APPEARANCE
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 "let g:solarized_termcolors=256
 
 set ofu=syntaxcomplete#Complete " auto-complete in insert mode
@@ -44,8 +44,9 @@ set ofu=syntaxcomplete#Complete " auto-complete in insert mode
 " <C-x><C-l>	Line completion
 " <C-x><C-o>	Omnicomplete
 " <C-x><C-u>	Eclim
+highlight Pmenu ctermbg=238 gui=bold "improve autocomplete menu color
 
-" automatically reload vimrc
+" automatically reload vimrc after saving an edit to it
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
@@ -131,8 +132,7 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
+autocmd FileType ruby let g:pathogen_disabled = ['YouCompleteMe']
 
 "Java
 let java_ignore_javadoc=1
@@ -152,29 +152,22 @@ let g:tex_noindent_env = 'document\|verbatim\|comment\|lstlisting\|minted'
 " let g:slimv_swank_cmd = '! xterm -e bigloo --load ~/.vim/bundle/slimv/slime/start-swank.lisp &'
 
 
-""" Plugins
+""""" PLUGIN CONFIGURATION
 "" Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" let Vundle manage Vundle
-" required!
 Bundle 'gmarik/vundle'
-" My Bundles here:
+" Vundle manages itself
 "
-" original repos on github
+"" My Bundles here:
+" Original repos on Github
 " Bundle 'FredKSchott/CoVim'
 " Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
-" Bundle 'Floobits/floobits-vim'
-" needs to be moved to ~/.vim/bundle/Floobits
 Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
-" Bundle 'Shougo/neocomplete.vim'
 Bundle 'terryma/vim-smooth-scroll'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'Shougo/vimshell.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Conque-Shell'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/slimv.vim'
@@ -184,6 +177,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'vim-scripts/openscad.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tomasr/molokai'
 
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
