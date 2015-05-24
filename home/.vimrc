@@ -1,8 +1,36 @@
 " William Meng's .vimrc file
 " " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
-
+"
 " For multi-byte character support (CJK support, for example):
 " "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
+
+""" Vundle: a package manager for VIM
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+" (Vundle manages itself)
+" Language support:
+Bundle 'wlmeng11/vim-latex'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'vim-scripts/openscad.vim'
+Bundle 'jplaut/vim-arduino-ino'
+" Appearance:
+Bundle 'tomasr/molokai'
+Bundle 'bling/vim-airline'
+Bundle 'terryma/vim-smooth-scroll'
+" Autocomplete:
+Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
+Bundle 'ervandew/supertab'
+Bundle 'Raimondi/delimitMate'
+" Miscellaneous:
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'vim-scripts/minibufexpl.vim'
+Bundle 'tpope/vim-fugitive'
+
+""" VISUAL APPEARANCE
+set background=dark
+color molokai
 
 syntax on " enable syntax highlighting
 set nocompatible " don't run in VI compatibility mode
@@ -31,11 +59,6 @@ set ls=2 " always show filename at bottome
 set foldmethod=syntax
 set foldlevelstart=99 " initially expand all folds
 set fdc=1 " show folds in left column
-
-""" VISUAL APPEARANCE
-set background=dark
-"colorscheme solarized
-"let g:solarized_termcolors=256
 
 set ofu=syntaxcomplete#Complete " auto-complete in insert mode
 " <C-n>			Keyword completion
@@ -106,8 +129,7 @@ map [27;5;9~ :bn<CR>
 map [Z :bp<CR>
 " map   <Control><Shift><Tab> :bp<CR>
 
-" opposite of Join lines
-nnoremap K i<CR><Esc>
+nnoremap K i<CR><Esc> " Split line
 
 " bind <F2> to display time and date
 map <F2> :echo 'Current time is ' . strftime('%c')<CR>
@@ -154,33 +176,6 @@ autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
 
 """"" PLUGIN CONFIGURATION
-"" Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-" Vundle manages itself
-"
-"" My Bundles here:
-" Original repos on Github
-" Bundle 'FredKSchott/CoVim'
-" Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
-Bundle 'ervandew/supertab'
-Bundle 'terryma/vim-smooth-scroll'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/slimv.vim'
-Bundle 'wlmeng11/vim-latex'
-Bundle 'vim-scripts/minibufexpl.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'vim-scripts/openscad.vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tomasr/molokai'
-Bundle 'jplaut/vim-arduino-ino'
-
 " miniBufExplorer config
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1

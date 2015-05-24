@@ -4,10 +4,6 @@ set guioptions-=T
 set guioptions-=r
 set guifont=monospace\ 10
 
-set background=dark
-
-colorscheme solarized
-
 vmap <C-C> "+y
 
 map <MiddleMouse> <Nop>
