@@ -4,6 +4,8 @@ set guioptions-=T
 set guioptions-=r
 set guifont=monospace\ 10
 
+color molokai
+
 vmap <C-C> "+y
 
 map <MiddleMouse> <Nop>

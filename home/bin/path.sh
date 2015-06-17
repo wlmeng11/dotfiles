@@ -2,6 +2,7 @@
 
 # set PATH
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/scripts/rvm
 PATH=$PATH:/opt/android-sdk/platform-tools/
 PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/workspace/robotics/ucpp/ucpp

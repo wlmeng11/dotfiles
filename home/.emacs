@@ -11,13 +11,13 @@
 (package-initialize)
 
 ;; vim-like bindings
-(require 'evil)
-(evil-mode 1)
+;(require 'evil)
+;(evil-mode 1)
 
 (setq inhibit-splash-screen t) ; disable splash screen
 (global-linum-mode t) ;; enable line numbers
 
-(load-theme 'solarized-light t) ; emacs24
+;(load-theme 'monokai t) ; emacs24
 ;(color-theme-solarized-light) ; emacs23
 
 ;; python-mode

@@ -28,9 +28,20 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'vim-scripts/minibufexpl.vim'
 Bundle 'tpope/vim-fugitive'
 
+""" KEYBINDINGS
+let mapleader = "\<Space>" "spacebar as Leader
+nnoremap <Leader>o :o 
+nnoremap <Leader>w :w<CR>
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 """ VISUAL APPEARANCE
 set background=dark
-color molokai
+color ir_black
 
 syntax on " enable syntax highlighting
 set nocompatible " don't run in VI compatibility mode
