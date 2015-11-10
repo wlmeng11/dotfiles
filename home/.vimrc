@@ -9,11 +9,13 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 " (Vundle manages itself)
-" Language support:
+" Language_Support:
 Bundle 'wlmeng11/vim-latex'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'vim-scripts/openscad.vim'
 Bundle 'jplaut/vim-arduino-ino'
+Bundle 'tmhedberg/SimpylFold'
+Bundle 'klen/python-mode'
 " Appearance:
 Bundle 'tomasr/molokai'
 Bundle 'bling/vim-airline'
@@ -27,11 +29,15 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'vim-scripts/minibufexpl.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'taglist.vim'
 
 """ KEYBINDINGS
 let mapleader = "\<Space>" "spacebar as Leader
 nnoremap <Leader>o :o 
+nnoremap <Leader>e :e 
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>s :s
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p

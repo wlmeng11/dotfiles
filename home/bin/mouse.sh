@@ -5,6 +5,7 @@ synclient HorizTwoFingerScroll=1 # Enable multitouch horizontal scrolling
 synclient TapButton1=0 # Disable tap to click
 synclient TapButton2=0 # Disable tap to click
 synclient TapButton3=0 # Disable tap to click
+synclient CoastingSpeed=0 # Disable inertial scrolling
 
 # Trackpoint
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1

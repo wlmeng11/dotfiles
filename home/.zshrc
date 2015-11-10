@@ -105,5 +105,3 @@ source /usr/share/autojump/autojump.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

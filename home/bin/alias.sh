@@ -38,3 +38,5 @@ alias freeze='killall -STOP'
 alias unfreeze='killall -CONT'
 alias reload='source ~/.zshrc'
 alias ts='tmuxstart'
+
+alias uu="sudo apt-get update && sudo apt-get upgrade"

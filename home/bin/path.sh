@@ -13,3 +13,7 @@ export PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+export ARDUINO_DIR="/usr/share/arduino"
+export ARDMK_DIR="/usr/share/arduino"
+export AVR_TOOLS_DIR="/usr"
