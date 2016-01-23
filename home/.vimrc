@@ -14,7 +14,7 @@ Bundle 'wlmeng11/vim-latex'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'vim-scripts/openscad.vim'
 Bundle 'jplaut/vim-arduino-ino'
-Bundle 'tmhedberg/SimpylFold'
+"Bundle 'tmhedberg/SimpylFold'
 Bundle 'klen/python-mode'
 " Appearance:
 Bundle 'tomasr/molokai'
@@ -174,6 +174,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "Java
 let java_ignore_javadoc=1
 autocmd FileType java nmap <F11> :w<CR>:!javac % && java `basename % .java`<CR>
+
+"Python
+autocmd FileType python nmap <F11> :w<CR>:!python %<CR>
 
 " LaTeX
 set grepprg=grep\ -nH\ $*

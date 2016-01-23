@@ -1,5 +1,6 @@
 #!/bin/sh
 
+alias "fixdns"="echo 'nameserver 8.8.8.8' | sudo tee /etc/resolve.conf"
 alias "rpi-serial"="screen /dev/ttyUSB0 115200"
 
 # enable color support of ls and also add handy aliases
