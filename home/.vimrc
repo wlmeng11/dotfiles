@@ -30,6 +30,8 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'vim-scripts/minibufexpl.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'taglist.vim'
+Bundle 'Rykka/clickable.vim'
+Bundle 'Rykka/clickable-things'
 
 """ KEYBINDINGS
 let mapleader = "\<Space>" "spacebar as Leader
@@ -73,9 +75,9 @@ set number " show line numbers, use ":set nu!" to disable
 set relativenumber " use line numbers relative to current line
 set modeline
 set ls=2 " always show filename at bottome
-set foldmethod=syntax
+"set foldmethod=syntax
 set foldlevelstart=99 " initially expand all folds
-set fdc=1 " show folds in left column
+set foldcolumn=4 " show folds in left column
 
 set ofu=syntaxcomplete#Complete " auto-complete in insert mode
 " <C-n>			Keyword completion
@@ -176,7 +178,8 @@ let java_ignore_javadoc=1
 autocmd FileType java nmap <F11> :w<CR>:!javac % && java `basename % .java`<CR>
 
 "Python
-autocmd FileType python nmap <F11> :w<CR>:!python %<CR>
+autocmd FileType python nmap <F11> :w<CR>:!python ./%<CR>
+autocmd FileType python set foldmethod=indent
 
 " LaTeX
 set grepprg=grep\ -nH\ $*
@@ -186,6 +189,7 @@ au BufWritePost *.tex !pdflatex -interaction nonstopmode --shell-escape %
 au FileType tex nmap <F9> :!pdflatex -interaction nonstopmode --shell-escape %<CR>
 au BufWritePre *.tex retab
 let g:tex_noindent_env = 'document\|verbatim\|comment\|lstlisting\|minted'
+let g:Imap_UsePlaceHolders = 0  " disable automatic insertion of <++>
 "autocmd FileType tex set et
 
 " LISP
@@ -193,6 +197,7 @@ let g:tex_noindent_env = 'document\|verbatim\|comment\|lstlisting\|minted'
 
 " Arduino
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
+autocmd FileType *.ino set foldmethod=syntax
 
 
 """"" PLUGIN CONFIGURATION

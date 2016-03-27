@@ -10,6 +10,7 @@
 	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
 	unstage = reset HEAD --
 	graph = log --graph --oneline --decorate
+	st = status --short
 [diff]
 	tool = vimdiff
 [merge]
