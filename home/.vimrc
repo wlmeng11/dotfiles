@@ -49,7 +49,7 @@ vmap <Leader>P "+P
 
 """ VISUAL APPEARANCE
 set background=dark
-color ir_black
+"color ir_black
 
 syntax on " enable syntax highlighting
 set nocompatible " don't run in VI compatibility mode
