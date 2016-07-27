@@ -9,6 +9,7 @@ PATH=$PATH:$HOME/workspace/robotics/ucpp/ucpp
 PATH=$PATH:$HOME/bin/tmuxstart
 PATH=$PATH:$HOME/.linuxbrew/bin
 PATH=$PATH:$HOME/strongback/java/bin
+PATH=$PATH:$HOME/.odrive-agent/bin/
 export PATH
 
 CLASSPATH=$CLASSPATH:$HOME/workspace/team8/hamcrest-core-1.3.jar
