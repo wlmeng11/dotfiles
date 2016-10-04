@@ -16,8 +16,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # other aliases
-alias l="ls --ignore='*.o' --ignore='*.class'"
-alias ll='ls -alF'
+alias ls="ls -GF"
+alias l="ls"
+alias ll='ls -alFh'
 alias la='ls -A'
 alias lt="ls --time-style='+%d-%m-%Y %H:%M:%S' -l "
 alias lstree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
