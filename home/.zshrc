@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/wlmeng.zsh-theme
 source ~/bin/path.sh # set PATH
 source ~/bin/alias.sh
-source /usr/share/autojump/autojump.sh
+#source /usr/share/autojump/autojump.sh
 [[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion" # RVM bash completion
 

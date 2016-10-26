@@ -1,5 +1,5 @@
 # vim: syntax=zsh
-source ~/bin/func.sh  && greeting
+source ~/bin/func.sh
 
 local ssh_status="%{$fg_no_bold[red]%}$(is_ssh && echo 'ssh@%m ')"
 local root_status="%{$fg_bold[red]%}$(is_root && echo 'root ')"

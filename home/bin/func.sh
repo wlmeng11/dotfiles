@@ -1,41 +1,6 @@
 #!/bin/sh
 # Custom shell functions
 
-fullname() {
-	cat /etc/passwd | grep $USER | cut -d: -f5 | sed 's/,//g'
-}
-
-firstname() {
-	fullname | awk '{print $1}'
-}
-
-get_shell() {
-	ps --pid $$ | tail -1 | awk '{print $4}' | sed 's/.*/\U&/'
-}
-
-# Space Odyssey style greeting
-# set your name in finger info via the chfn command
-greeting() {
-	# Greeting
-	local HOUR=$(date +"%H")
-	local GREETING=morning
-	if [ $HOUR -ge 12 ]; then
-		GREETING=afternoon
-	fi
-	if [ $HOUR -ge 18 ]; then
-		GREETING=evening
-	fi
-	echo "Good $GREETING, $(firstname). This is $(get_shell). I'm ready for my first command."
-}
-
-# Handle errors, HAL 9000 style
-err_handle() {
-	status=$?
-	lastcmd=$(history | tail -1 | sed 's/^ *[0-9]* *//')
-
-	echo "I'm sorry, $(firstname). I'm afraid I can't do that."
-}
-
 # set the PS1 prompt with colors, exit code, and git-branch info
 set_prompt() {
 	local GREEN="\[\e[1;32m\]"
