@@ -22,7 +22,6 @@ Bundle 'bling/vim-airline'
 Bundle 'terryma/vim-smooth-scroll'
 " Autocomplete:
 Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
 Bundle 'Raimondi/delimitMate'
 " Miscellaneous:
