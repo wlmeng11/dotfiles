@@ -21,22 +21,17 @@ if [ -n "$DISPLAY" ]; then
 	# Check for detached tmux sessions and attach to it, else create new
 	[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
     export EDITOR=vim
-	setxkbmap -option caps:escape
 else
     export EDITOR=vim
 fi
 
 # Export some variables
-export TZ="/usr/share/zoneinfo/US/Pacific"
 export BC_ENV_ARGS=~/.bcrc
-export ANDROID_JAVA_HOME=/opt/java6
 export CLASSPATH=./
 export CLASSPATH=$CLASSPATH:/usr/share/java/*
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/opt/android-sdk/platform-tools/
 PATH=$PATH:$HOME/bin
-PATH=$PATH:$HOME/workspace/robotics/ucpp/ucpp
 PATH=$PATH:$HOME/bin/tmuxstart
 export PATH
 
@@ -85,6 +80,3 @@ alias killwithfire="killall -9"
 alias freeze='killall -STOP'
 alias unfreeze='killall -CONT'
 alias reload='source ~/.bashrc'
-
-# Pacman aliases
-alias pacman-clean='sudo pacman -Rns $(pacman -Qqtd)'
