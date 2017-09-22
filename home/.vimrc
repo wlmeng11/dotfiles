@@ -179,6 +179,9 @@ autocmd FileType java nmap <F11> :w<CR>:!javac % && java `basename % .java`<CR>
 "Python
 autocmd FileType python nmap <F11> :w<CR>:!python ./%<CR>
 autocmd FileType python set foldmethod=indent
+let g:pymode_rope=0
+let g:pep8_ignore="E501,W601"
+
 
 " LaTeX
 set grepprg=grep\ -nH\ $*
