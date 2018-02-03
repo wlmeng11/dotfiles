@@ -19,9 +19,8 @@ trap 'err_handle' ERR
 
 if [ -n "$DISPLAY" ]; then
 	# Check for detached tmux sessions and attach to it, else create new
-	[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
+	#[[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
     export EDITOR=vim
-	setxkbmap -option caps:escape
 else
     export EDITOR=vim
 fi
