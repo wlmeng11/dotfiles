@@ -27,7 +27,7 @@ Bundle 'ervandew/supertab'
 Bundle 'Raimondi/delimitMate'
 " Miscellaneous:
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'vim-scripts/minibufexpl.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'taglist.vim'
 Bundle 'Rykka/clickable.vim'
@@ -201,44 +201,29 @@ autocmd FileType *.ino set foldmethod=syntax
 
 
 """"" PLUGIN CONFIGURATION
-" miniBufExplorer config
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1 " switch buffers with <C-Tab> and <C-S-Tab> in GVIM
-let g:miniBufExplModSelTarget = 1
+" airline config
+let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
 
-" netrw configuration
-let g:netrw_liststyle=3 " tree style
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
 
-" YouCompleteMe
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_filetype_whitelist = {
-			\ 'c': 1,
-			\ 'cpp': 1,
-			\}
-let g:ycm_filetype_blacklist = {
-			\'ruby': 1,
-			\ 'java': 1,
-			\}
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'objc' : ['->', '.'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,d,vim,ruby,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \ }
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
 
-" Eclim
-" let g:EclimCompletionMethod = 'omnifunc'
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
 
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
 
 " Syntastic
 let g:syntastic_c_check_header = 1
