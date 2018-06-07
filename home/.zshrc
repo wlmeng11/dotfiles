@@ -9,7 +9,7 @@ ZSH=$HOME/.oh-my-zsh
 
 source ~/bin/func.sh
 # Check for detached tmux sessions and attach to it, else create new
-! is_root && is_gui && ! is_ssh && [[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
+#! is_root && is_gui && ! is_ssh && [[ -z "$TMUX" ]] && ((tmux ls | grep -vq attached && tmux at) || tmux)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

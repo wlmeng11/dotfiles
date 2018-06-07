@@ -19,10 +19,8 @@ Bundle 'klen/python-mode'
 " Appearance:
 Bundle 'tomasr/molokai'
 Bundle 'bling/vim-airline'
-Bundle 'terryma/vim-smooth-scroll'
 " Autocomplete:
 Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
 Bundle 'Raimondi/delimitMate'
 " Miscellaneous:
@@ -49,7 +47,7 @@ vmap <Leader>P "+P
 
 """ VISUAL APPEARANCE
 set background=dark
-"color ir_black
+color molokai
 
 syntax on " enable syntax highlighting
 set nocompatible " don't run in VI compatibility mode
@@ -72,7 +70,6 @@ set shiftwidth=4
 set enc=utf8 " set encoding to utf8 for gvim
 
 set number " show line numbers, use ":set nu!" to disable
-set relativenumber " use line numbers relative to current line
 set modeline
 set ls=2 " always show filename at bottome
 "set foldmethod=syntax
@@ -227,14 +224,3 @@ nmap <leader>bl :ls<CR>
 
 " Syntastic
 let g:syntastic_c_check_header = 1
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Smooth scrolling
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 15, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 15, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 15, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 15, 4)<CR>

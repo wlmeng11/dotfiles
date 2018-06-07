@@ -18,9 +18,5 @@
 [push]
 	default = current
 [core]
-	excludesfile = /home/wlmeng/.gitignore_global
-	editor = env TERM=screen-256color vim -f
-[branch]
-	autosetuprebase = always
-[branch "master"]
-	rebase = true
+	excludesfile = /home/wmeng/.gitignore_global
+	editor = vim -f
