@@ -3,36 +3,24 @@
 if &compatible
  set nocompatible
 endif
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('~/.cache/dein')
- call dein#begin('~/.cache/dein')
+call plug#begin('~/.local/share/nvim/plugged')
 
- call dein#add('~/.cache/dein')
- call dein#add('Shougo/deoplete.nvim')
+" Appearance
+Plug 'tomasr/molokai'
+Plug 'bling/vim-airline'
 
- if !has('nvim')
-   call dein#add('roxma/nvim-yarp')
-   call dein#add('roxma/vim-hug-neovim-rpc')
- endif
+" Editor Features
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/vim-easy-align'
+Plug 'ntpeters/vim-better-whitespace'
 
- " Appearance
- call dein#add('tomasr/molokai')
- call dein#add('bling/vim-airline')
+" Language Support
+"Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'JamshedVesuna/vim-markdown-preview'
 
- " Editor Features
- call dein#add('terryma/vim-multiple-cursors')
- call dein#add('Rykka/clickable.vim')
- call dein#add('Rykka/clickable-things')
-
- " Language Support
- call dein#add('klen/python-mode',
-			 \{'on_ft': ['py']})
-
- call dein#end()
- call dein#save_state()
-endif
+" Initialize plugin system
+call plug#end()
 
 
 """ CORE FEATURES
@@ -40,7 +28,8 @@ filetype plugin indent on
 syntax enable
 set number
 set mouse=a
-
+set tabstop=4
+set shiftwidth=4
 
 """ KEYBINDINGS
 let mapleader = "\<Space>" "spacebar as Leader
