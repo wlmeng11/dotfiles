@@ -24,4 +24,4 @@
 [gpg]
 	program = gpg
 [commit]
-	gpgsign = true
+	gpgsign = true # automatically sign commits. requires gpg >=2.0
