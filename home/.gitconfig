@@ -1,7 +1,6 @@
 [user]
-	email = wlmeng11@gmail.com
+	email = wlmeng@stanford.edu
 	name = William Meng
-	signingkey = 6004C2E83F664BFD
 [color]
 	ui = auto
 [credential]
@@ -19,9 +18,5 @@
 [push]
 	default = current
 [core]
-	excludesfile = /home/wmeng/.gitignore_global
+	excludesfile = /home/wlmeng/.gitignore_global
 	editor = vim -f
-[gpg]
-	program = gpg
-[commit]
-	gpgsign = true # automatically sign commits. requires gpg >=2.0
