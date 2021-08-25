@@ -5,5 +5,5 @@
 
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
-ln -sf dotfiles/home/.zshrc ~
+#ln -sf dotfiles/home/.zshrc ~
 chsh -s `command -v zsh`
