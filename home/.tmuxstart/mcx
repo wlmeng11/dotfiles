@@ -1,0 +1,9 @@
+new_session -n mcx
+set_path ~/home/neural-dot
+split 0 -h
+split 0.1 -v -p "90"
+send_keys 0.0 "cd ~/work/neural-dot; conda activate dot" "Enter"
+send_keys 0.1 "cd ~/work/neural-dot; conda activate dot" "Enter"
+send_keys 0.1 "gpustat -i 0.5" "Enter"
+send_keys 0.2 "htop" "Enter"
+select_pane 0.0
