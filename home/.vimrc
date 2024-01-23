@@ -7,7 +7,7 @@
 """ Vundle: a package manager for VIM
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 " (Vundle manages itself)
 " Language_Support:
 Bundle 'wlmeng11/vim-latex'
@@ -20,7 +20,8 @@ Bundle 'klen/python-mode'
 Bundle 'tomasr/molokai'
 Bundle 'bling/vim-airline'
 " Autocomplete:
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
+Bundle 'dense-analysis/ale'
 Bundle 'ervandew/supertab'
 Bundle 'Raimondi/delimitMate'
 " Miscellaneous:

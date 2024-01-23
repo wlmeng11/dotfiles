@@ -1,7 +1,10 @@
-new_session -n sysmon
+new_session -n sys
 new_window -n su
 split 0 -h
+split 0.0
 split 0.1
-send_keys 0.0 "htop" "Enter"
-send_keys 0.1 "watch -n 1 'sensors'" "Enter"
-send_keys 0.2 "nvtop" "Enter"
+send_keys 0.0 "nvtop" "Enter"
+send_keys 0.1 "conda activate base" "Enter"
+send_keys 0.1 "gpustat -i 0.5" "Enter"
+#send_keys 0.2 "iotop" "Enter"
+send_keys 0.3 "htop" "Enter"
